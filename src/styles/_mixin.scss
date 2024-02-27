@@ -1,0 +1,20 @@
+@mixin flexbox($gap: normal, $direction: column, $justify: flex-start, $align: flex-start) {
+  display: flex;
+  gap: $gap;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin ellipsis($line: 1) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap !important;
+
+  @if $line > 1 {
+    display: -webkit-box;
+    -webkit-line-clamp: $line;
+    white-space: initial !important;
+    -webkit-box-orient: vertical;
+  }
+}

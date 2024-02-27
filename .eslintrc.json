@@ -1,0 +1,216 @@
+{
+  "plugins": [
+    "react",
+    "react-hooks",
+    "@typescript-eslint",
+    "unused-imports"
+    // "@tanstack/query"
+  ],
+  "ignorePatterns": [
+    "*/**/*.js"
+  ],
+  "overrides": [
+    {
+      "files": "*.json",
+      "parser": "jsonc-eslint-parser",
+      "rules": {}
+    },
+    {
+      "files": "*.js",
+      "parserOptions": {
+        "ecmaVersion": 13
+      },
+      "rules": {}
+    },
+    {
+      "files": [
+        "*.ts",
+        "*.tsx"
+      ],
+      "extends": [
+        "plugin:react-hooks/recommended",
+        "next",
+        "next/core-web-vitals",
+        "plugin:react/recommended",
+        "plugin:react/jsx-runtime"
+        // "plugin:@tanstack/eslint-plugin-query/recommended"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "plugins": [
+        "@typescript-eslint"
+      ],
+      "parserOptions": {
+        "project": "./tsconfig.json",
+        "ecmaFeatures": {
+          "jsx": true
+        },
+        "ecmaVersion": 13,
+        "sourceType": "module"
+      },
+      "rules": {
+        "@next/next/no-html-link-for-pages": "off", // Next.js에서 페이지에서의 HTML 링크 사용을 비활성화
+        "@typescript-eslint/semi": [ // TypeScript에서 세미콜론을 사용하지 않도록 강제
+          "error",
+          "never"
+        ],
+        "@typescript-eslint/indent": [ // TypeScript에서 들여쓰기 규칙 설정, 특정 노드 및 switch case에 대한 예외 추가
+          "error",
+          2,
+          {
+            "ignoredNodes": [
+              "TSTypeParameterInstantiation"
+            ],
+            "SwitchCase": 1
+          }
+        ],
+        "@typescript-eslint/no-unused-vars": [ // TypeScript에서 사용하지 않는 변수에 대한 경고, 특정 패턴의 변수는 무시
+          "error",
+          {
+            "argsIgnorePattern": "^_"
+          }
+        ],
+        "react/function-component-definition": [ // React 함수 컴포넌트 정의 시 arrow function 사용 강제
+          2,
+          {
+            "namedComponents": "arrow-function"
+          }
+        ],
+        "react/require-default-props": "off", // React 컴포넌트의 defaultProps 사용을 비활성화
+        "react-hooks/exhaustive-deps": "warn", // useEffect 등에서 의존성 배열을 완전히 지정하지 않을 때 경고 표시
+        "react/jsx-key": "error", // React JSX 요소에 대한 고유한 key 속성 부여를 강제
+        "import/prefer-default-export": "off", // 단일 내보내기가 아닌 모듈에서 명시적으로 내보내기를 사용하는 것을 허용
+        "no-restricted-exports": "off", // 특정 모듈에서 내보내기를 제한하는 규칙을 비활성화
+        // TODO: 개발 완료 후 주석 해제
+        // "no-console": [
+        //   "error",
+        //   {
+        //     "allow": [
+        //       "warn",
+        //       "error"
+        //     ]
+        //   }
+        // ], // console.log, console.warn, console.error 등을 사용할 때 경고를 표시하지만, warn 및 error는 허용
+        "radix": "off", // parseInt 함수 호출 시 진수 지정을 강제하지 않도록 비활성화
+        "default-case": "off", // switch 문에서 default case의 사용을 강제하지 않도록 비활성화
+        "react/react-in-jsx-scope": "off", // JSX를 사용할 때 React를 명시적으로 import하지 않아도 되도록 비활성화
+        "react/no-danger": "off", // dangerouslySetInnerHTML 사용을 허용
+        "jsx-a11y/anchor-is-valid": "off", // 잘못된 href 속성을 사용하는 <a> 요소를 허용
+        "jsx-a11y/label-has-associated-control": [
+          "error",
+          {
+            "assert": "either"
+          }
+        ], // label 요소와 연관된 control이 있어야 함을 확인하며, either 모드에서 양쪽 중 하나만 만족시켜도 허용
+        "jsx-a11y/no-noninteractive-element-interactions": "off", // 비인터랙티브 요소에서의 이벤트 처리를 허용
+        "jsx-a11y/click-events-have-key-events": "off", // 클릭 이벤트에 대응하는 키보드 이벤트를 강제하지 않도록 비활성화
+        "arrow-body-style": "off", // 화살표 함수의 몸체에 대한 스타일 강제를 비활성화
+        "react/jsx-props-no-spreading": [ // JSX 속성을 펼침(spreading)을 허용하지 않도록 설정
+          "off" // 비활성화
+        ],
+        "@typescript-eslint/no-non-null-assertion": "off", // TypeScript에서의 non-null 단언식 사용을 허용
+        "no-trailing-spaces": "error", // 줄 끝에 공백을 허용하지 않음
+        "no-multiple-empty-lines": [ // 여러 빈 줄에 대한 규칙 설정
+          "error",
+          {
+            "max": 1, // 최대 1개의 빈 줄까지만 허용
+            "maxEOF": 0 // 파일 끝에는 빈 줄을 허용하지 않음
+          }
+        ],
+        "quotes": [ // 따옴표 사용에 대한 규칙 설정
+          "error",
+          "single" // 작은 따옴표 사용 강제
+        ],
+        "eol-last": [ // 파일의 끝에 개행 문자를 강제로 추가
+          "error",
+          "always"
+        ],
+        "react/jsx-max-props-per-line": [ // JSX 속성을 한 줄에 하나씩 작성하도록 강제
+          "error",
+          {
+            "maximum": 1, // 한 줄에 최대 1개의 속성 허용
+            "when": "multiline" // 다중 줄일 때만 적용
+          }
+        ],
+        "react/jsx-indent": [ // JSX 요소의 들여쓰기 규칙 설정
+          "error",
+          2 // 2칸 들여쓰기 강제
+        ],
+        "react/jsx-indent-props": [ // JSX 속성의 들여쓰기 규칙 설정
+          "error",
+          2 // 2칸 들여쓰기 강제
+        ],
+        "react/jsx-first-prop-new-line": [ // JSX 첫 번째 속성을 새 줄에 작성하도록 강제
+          "error",
+          "multiline-multiprop" // 다중 속성이면 각 속성을 새 줄에 작성
+        ],
+        "react/jsx-closing-tag-location": "error", // JSX 닫는 태그의 위치에 대한 규칙 설정
+        "react/jsx-closing-bracket-location": "error", // JSX 닫는 괄호의 위치에 대한 규칙 설정
+        "react/jsx-one-expression-per-line": "off", // JSX에서 한 줄에 하나의 표현식만 작성할 필요를 강제하지 않음
+        "react/jsx-tag-spacing": [ // JSX 태그 주변의 공백에 대한 규칙 설정
+          "error",
+          {
+            "beforeSelfClosing": "always", // self-closing 태그 앞에는 항상 공백을 허용
+            "beforeClosing": "never" // 닫는 괄호 앞에는 공백을 허용하지 않음
+          }
+        ],
+        "react/jsx-curly-brace-presence": [ // JSX 중괄호의 사용에 대한 규칙 설정
+          "error",
+          {
+            "props": "never", // 속성에서 중괄호 사용을 허용하지 않음
+            "children": "never" // 자식 요소에서 중괄호 사용을 허용하지 않음
+          }
+        ],
+        "react/self-closing-comp": "error", // self-closing 컴포넌트를 사용하도록 강제
+        "react/jsx-wrap-multilines": [ // 다중 줄의 JSX를 괄호로 감싸는 규칙 설정
+          "error",
+          {
+            "declaration": "parens-new-line",
+            "assignment": "parens-new-line",
+            "return": "parens-new-line",
+            "arrow": "parens-new-line",
+            "condition": "parens-new-line",
+            "logical": "parens-new-line",
+            "prop": "parens-new-line"
+          }
+        ],
+        "react/no-unused-prop-types": "error", // 사용되지 않는 prop types에 대한 경고 표시
+        "unused-imports/no-unused-imports": "error", // 사용되지 않는 import에 대한 경고 표시
+        "object-curly-spacing": [ // 객체 리터럴의 중괄호 주위의 공백에 대한 규칙 설정
+          "error",
+          "always" // 항상 공백을 허용
+        ],
+        "object-curly-newline": [ // 객체 리터럴의 중괄호와 속성 사이의 개행에 대한 규칙 설정
+          "error",
+          {
+            "multiline": true,
+            "minProperties": 0,
+            "consistent": true
+          }
+        ],
+        "object-property-newline": [ // 객체 속성의 새 줄에 대한 규칙 설정
+          "error",
+          {
+            "allowAllPropertiesOnSameLine": true // 모든 속성을 동일한 줄에 작성 허용
+          }
+        ],
+        "@next/next/no-img-element": "off", // Next.js에서 <img> 요소 사용을 허용
+        "no-empty": [ // 빈 블록 문에 대한 경고 표시
+          "error",
+          {
+            "allowEmptyCatch": true // catch 블록이 빈 경우에 허용
+          }
+        ],
+        "comma-dangle": [ // 마지막 속성 뒤에 쉼표를 강제로 추가하는 규칙 설정
+          "error",
+          "always-multiline" // 다중 줄일 때만 쉼표를 강제로 추가
+        ],
+        "function-paren-newline": [ // 함수 선언 시 괄호 다음에 개행을 강제로 추가하는 규칙 설정
+          "error",
+          "consistent" // 일관된 스타일로 개행을 추가
+        ],
+        "consistent-return": "off", // 일관된 return 문 강제를 비활성화
+        "no-useless-rename": "error" // 사용하지 않는 이름 변경에 대한 경고 표시
+      }
+    }
+  ]
+}

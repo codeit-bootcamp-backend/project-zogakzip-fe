@@ -1,0 +1,76 @@
+@mixin glyph30Bold($line-height: normal) {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: $line-height;
+}
+
+@mixin glyph24Bold($line-height: normal) {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: $line-height;
+}
+
+@mixin glyph18Bold($line-height: normal) {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: $line-height;
+}
+
+@mixin glyph16Bold($line-height: normal) {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: $line-height;
+}
+
+@mixin glyph14Bold($line-height: normal) {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: $line-height;
+}
+
+@mixin glyph16Medium($line-height: normal) {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: $line-height;
+}
+
+@mixin glyph20Regular($line-height: normal) {
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: $line-height;
+}
+
+@mixin glyph18Regular($line-height: normal) {
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: $line-height;
+}
+
+@mixin glyph16Regular($line-height: normal) {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: $line-height;
+}
+
+@mixin glyph14Regular($line-height: normal) {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: $line-height;
+}
+
+@mixin glyph12Regular($line-height: normal) {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: $line-height;
+}

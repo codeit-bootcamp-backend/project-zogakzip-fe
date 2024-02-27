@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -17,10 +21,36 @@
         "name": "next"
       }
     ],
+    // 기본 경로를 프로젝트 최상단으로 설정
+    "baseUrl": ".",
+    // 일부를 aliasing 하여 절대경로의 길이를 축소함
+    // 특정 파일을 import 할 때, import 경로가 가장 먼저 일치하는 paths의 프로퍼티 값의 프로퍼티가 상단에 써짐
     "paths": {
-      "@/*": ["./src/*"]
+      "@libs/*": [
+        "src/libs/*"
+      ],
+      "@styles/*": [
+        "src/styles/*"
+      ],
+      "@services/*": [
+        "src/services/*"
+      ],
+      "@app/*": [
+        "src/app/*"
+      ],
+      // 아직 alias 하지 않은 src 내 경로의 경우 이 곳에 해당됨
+      "@/*": [
+        "src/*"
+      ],
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
