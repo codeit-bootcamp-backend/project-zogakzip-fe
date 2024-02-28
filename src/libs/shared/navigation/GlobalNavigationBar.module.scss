@@ -1,0 +1,23 @@
+.container {
+  position: relative;
+  width: 1920px;
+  height: 100px;
+  margin: 0 auto;
+  padding-inline: 180px;
+
+  .logoWrapper {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .buttonWrapper {
+    position: relative;
+    top: 50%;
+    width: fit-content;
+    margin-left: auto;
+    transform: translateY(-50%);
+  }
+}

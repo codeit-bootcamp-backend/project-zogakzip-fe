@@ -1,0 +1,14 @@
+.container {
+  @include glyph14Bold;
+  width: fit-content;
+  padding: 13.5px 20px;
+  border-radius: 22.5px;
+  color: $black;
+  text-align: center;
+
+  &.selected {
+    background-color: $black;
+    color: $white;
+    pointer-events: none;
+  }
+}

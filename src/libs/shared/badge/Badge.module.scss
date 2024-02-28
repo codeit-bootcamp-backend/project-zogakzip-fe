@@ -1,0 +1,7 @@
+.container {
+  @include glyph16Medium(20px);
+  width: fit-content;
+  padding: 16px 30px;
+  border-radius: 50px;
+  background-color: $gray100;
+}

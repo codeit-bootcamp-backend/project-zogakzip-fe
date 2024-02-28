@@ -1,0 +1,39 @@
+.container {
+  border-radius: 6px;
+  text-align: center;
+
+  &.small {
+    @include glyph14Regular($button-height-small);
+    width: 100px;
+    height: $button-height-small;
+  }
+
+  &.medium {
+    @include glyph14Bold($button-height-medium);
+    width: 200px;
+    height: $button-height-medium;
+  }
+
+  &.large {
+    @include glyph16Medium($button-height-large);
+    width: 400px;
+    height: $button-height-large;
+  }
+
+  &.extraLarge {
+    @include glyph14Bold($button-height-extra-large);
+    width: 100%;
+    height: $button-height-extra-large;
+  }
+
+  &.dark {
+    background-color: $black;
+    color: $gray50;
+  }
+
+  &.bright {
+    background-color: $white;
+    box-shadow: 0 0 0 1px inset $black;
+    color: $black;
+  }
+}

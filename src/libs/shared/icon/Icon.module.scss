@@ -1,0 +1,11 @@
+.container {
+  &.clickable {
+    cursor: pointer;
+  }
+
+  @for $i from 1 through 8 {
+    &.rotate-#{$i * 45} {
+      transform: rotate(#{$i * 45}deg);
+    }
+  }
+}
