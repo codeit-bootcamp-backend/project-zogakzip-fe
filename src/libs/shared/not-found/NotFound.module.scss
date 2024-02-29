@@ -1,0 +1,23 @@
+.container {
+  width: 1920px;
+  margin: 0 auto;
+  padding-block: 311px 411px;
+
+  .iconWrapper {
+    width: fit-content;
+    margin: 0 auto 41px;
+  }
+
+  .title {
+    @include glyph18Bold;
+    margin-bottom: 20px;
+    color: $gray500;
+    text-align: center;
+  }
+
+  .content {
+    @include glyph14Regular;
+    color: $gray400;
+    text-align: center;
+  }
+}

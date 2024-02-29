@@ -1,0 +1,59 @@
+.container {
+  position: relative;
+  width: fit-content;
+
+  .trigger {
+    @include flexbox(normal, row, space-between, center);
+    width: 160px;
+    height: 45px;
+    padding-inline: 20px 15px;
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px inset $black;
+
+    .selectedOption {
+      @include glyph14Regular;
+    }
+
+    .iconWrapper {
+      @include flexbox(normal, row, center, center);
+      width: 24px;
+      height: 24px;
+
+      img {
+        transition: transform 0.5s;
+      }
+    }
+  }
+
+  .popup {
+    z-index: 100;
+    top: 47px;
+
+    .selectMenu {
+      width: 160px;
+      padding: 5px 1px;
+      border-radius: 6px;
+      background-color: $white;
+      box-shadow: 0 0 0 1px inset $black;
+
+      .item {
+        @include glyph14Regular;
+        width: 100%;
+        transition:
+          background-color 0.5s,
+          color 0.5s;
+        color: $gray500;
+        text-align: left;
+
+        &:hover {
+          background-color: $gray100;
+          color: $black;
+        }
+
+        .text {
+          margin: 10px 19px;
+        }
+      }
+    }
+  }
+}

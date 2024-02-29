@@ -1,3 +1,10 @@
+// enum
+export enum SortBy {
+  latest = 'latest',
+  mostPosted = 'mostPosted',
+  mostLiked = 'mostLiked',
+  mostBadge = 'mostBadge',
+}
 
 export type Group = {
   id: number,
