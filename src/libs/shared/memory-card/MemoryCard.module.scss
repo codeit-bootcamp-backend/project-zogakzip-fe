@@ -1,0 +1,73 @@
+.container {
+  @include flexbox(20px, column, flex-start, stretch);
+  width: 375px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 0 1px inset $gray200;
+
+  .image {
+    border-radius: 6px;
+    object-fit: cover;
+  }
+
+  .contentContainer {
+    @include flexbox(20px, column, flex-start, stretch);
+
+    .header {
+      @include flexbox(10px, row, flex-start, center);
+      @include glyph14Regular;
+
+      .verticalLine {
+        color: $gray400;
+      }
+
+      .isPublic {
+        color: $gray500;
+      }
+    }
+
+    .body {
+      @include flexbox(10px, column, flex-start, stretch);
+
+      .title {
+        @include glyph16Bold;
+        @include ellipsis;
+      }
+
+      .tagsContainer {
+        @include flexbox(normal, row);
+        @include ellipsis;
+        flex-wrap: wrap;
+        gap: 2px 5px;
+        height: 38px;
+
+        .tag {
+          @include glyph14Regular;
+          color: $gray400;
+        }
+      }
+    }
+
+    .footer {
+      @include flexbox(40px, row, space-between, center);
+
+      .mapInfo {
+        @include glyph12Regular;
+        white-space: pre;
+      }
+
+      .countInfo {
+        @include flexbox(20px, row, flex-start, center);
+      }
+
+      .countContainer {
+        @include flexbox(5px, row, flex-start, center);
+
+        .count {
+          @include glyph14Regular;
+          color: $gray500;
+        }
+      }
+    }
+  }
+}

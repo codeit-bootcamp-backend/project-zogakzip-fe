@@ -1,0 +1,67 @@
+.container {
+  @include flexbox(20px, column, flex-start, stretch);
+  width: 375px;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 0 1px inset $gray200;
+
+  .image {
+    border-radius: 6px;
+    object-fit: cover;
+  }
+
+  .contentContainer {
+    @include flexbox(20px, column, flex-start, stretch);
+
+    .header {
+      @include flexbox(10px, row, flex-start, center);
+
+      .verticalLine {
+        @include glyph14Regular;
+        color: $gray400;
+      }
+
+      .isPublic {
+        @include glyph14Regular;
+        color: $gray500;
+      }
+    }
+
+    .body {
+      @include flexbox(10px, column, flex-start, stretch);
+
+      .name {
+        @include glyph16Bold;
+        @include ellipsis;
+      }
+
+      .introduction {
+        @include glyph16Regular;
+        @include ellipsis(2);
+        height: 40px;
+      }
+    }
+
+    .footer {
+      @include flexbox(40px, row);
+
+      .countContainer {
+        @include flexbox(5px, column);
+      }
+
+      .label {
+        @include glyph12Regular;
+        color: $gray400;
+      }
+
+      .count {
+        @include glyph14Regular(18px);
+
+        .likeCount {
+          margin-left: 5px;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}
