@@ -1,0 +1,21 @@
+.dialog {
+  position: relative;
+  top: 50%;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 40px;
+  transform: translate(0, -50%);
+  border-radius: 6px;
+  background-color: $gray50;
+
+  .closeButton {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  .title {
+    @include glyph24Bold;
+    text-align: center;
+  }
+}
