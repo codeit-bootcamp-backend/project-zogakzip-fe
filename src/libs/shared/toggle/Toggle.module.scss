@@ -1,0 +1,39 @@
+.container {
+  @include flexbox(normal, row, space-between, center);
+  width: 100px;
+
+  .valueText {
+    @include glyph14Regular;
+  }
+
+  .toggle {
+    display: inline-block;
+    position: relative;
+    width: 48px;
+    height: 24px;
+    transition: 0.2s ease-in-out;
+    border-radius: 15px;
+    background-color: $gray400;
+    cursor: pointer;
+
+    &.active {
+      background-color: $black;
+    }
+
+    .handle {
+      position: absolute;
+      left: 0;
+      width: 24px;
+      height: 24px;
+      transition: 0.2s ease-in-out;
+      border-radius: 50%;
+      background-color: $gray50;
+      box-shadow: 0 0 0 1px inset $gray400;
+
+      &.active {
+        left: calc(100% - 24px);
+        box-shadow: 0 0 0 1px inset $black;
+      }
+    }
+  }
+}
