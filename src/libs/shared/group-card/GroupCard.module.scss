@@ -33,12 +33,20 @@
       .name {
         @include glyph16Bold;
         @include ellipsis;
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
 
       .introduction {
         @include glyph16Regular;
         @include ellipsis(2);
         height: 40px;
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
     }
 

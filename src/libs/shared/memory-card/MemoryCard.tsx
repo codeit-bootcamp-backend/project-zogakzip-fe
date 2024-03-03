@@ -1,22 +1,25 @@
 import classNames from 'classnames/bind'
 import styles from './MemoryCard.module.scss'
-import { Memory } from '@services/api/types'
+import { PrivateMemory, PublicMemory } from '@services/api/types'
 import Image from 'next/image'
 import Icon from '../icon/Icon'
 import formatDate from '../util-util/formatDate'
 import formatLikeCount from '../util-util/formatLikeCount'
+import Link from 'next/link'
 
 const cx = classNames.bind(styles)
 
 type MemoryCardProps = {
-  card: Memory
+  card: PublicMemory | PrivateMemory
 }
 
 const MemoryCard = ({ card }: MemoryCardProps) => {
-  const { nickname, isPublic, title, tags, location, moment, commentCount, likeCount, imageUrl } = card
+  const { id, nickname, isPublic, title, tags, location, moment, commentCount, likeCount, imageUrl } = card
   return (
     <div className={cx('container')}>
-      {isPublic && <Image className={cx('image')} src={imageUrl} width={335} height={335} alt='그룹 사진' />}
+      <Link href={`/posts/${id}`}>
+        {isPublic && <Image className={cx('image')} src={imageUrl || '/images/default-image.svg'} width={335} height={335} alt='그룹 사진' />}
+      </Link>
       <div className={cx('contentContainer')}>
         <div className={cx('header')}>
           <div className={cx('nickname')}>{nickname}</div>
@@ -24,7 +27,9 @@ const MemoryCard = ({ card }: MemoryCardProps) => {
           <div className={cx('isPublic')}>{isPublic ? '공개' : '비공개'}</div>
         </div>
         <div className={cx('body')}>
-          <h3 className={cx('title')}>{title}</h3>
+          <Link href={`/posts/${id}`}>
+            <h3 className={cx('title')}>{title}</h3>
+          </Link>
           {isPublic
             && (
               <div className={cx('tagsContainer')}>

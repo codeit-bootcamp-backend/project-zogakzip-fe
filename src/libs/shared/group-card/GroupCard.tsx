@@ -1,23 +1,26 @@
 import classNames from 'classnames/bind'
 import styles from './GroupCard.module.scss'
 import Image from 'next/image'
-import { Group } from '@services/api/types'
+import { PrivateGroup, PublicGroup } from '@services/api/types'
 import DiffDay from './DiffDay'
 import Icon from '../icon/Icon'
 import formatLikeCount from '../util-util/formatLikeCount'
+import Link from 'next/link'
 
 const cx = classNames.bind(styles)
 
 type GroupCardProps = {
-  card: Group
+  card: PublicGroup | PrivateGroup
 }
 
 const GroupCard = ({ card }: GroupCardProps) => {
-  const { name, createdAt, introduction, imageUrl, isPublic, likeCount, badgeCount, postCount } = card
+  const { id, name, createdAt, introduction, imageUrl, isPublic, likeCount, badgeCount, postCount } = card
 
   return (
     <div className={cx('container')}>
-      {isPublic && <Image className={cx('image')} src={imageUrl} width={335} height={335} alt='그룹 사진' />}
+      <Link href={`/groups/${id}`}>
+        {isPublic && <Image className={cx('image')} src={imageUrl || '/images/default-image.svg'} width={335} height={335} alt='그룹 사진' />}
+      </Link>
       <div className={cx('contentContainer')}>
         <div className={cx('header')}>
           <DiffDay createdAt={createdAt} />
@@ -25,8 +28,12 @@ const GroupCard = ({ card }: GroupCardProps) => {
           <div className={cx('isPublic')}>{isPublic ? '공개' : '비공개'}</div>
         </div>
         <div className={cx('body')}>
-          <h3 className={cx('name')}>{name}</h3>
-          {isPublic && <p className={cx('introduction')}>{introduction}</p>}
+          <Link href={`/groups/${id}`}>
+            <h3 className={cx('name')}>{name}</h3>
+          </Link>
+          <Link href={`/groups/${id}`}>
+            {isPublic && <p className={cx('introduction')}>{introduction}</p>}
+          </Link>
         </div>
         <div className={cx('footer')}>
           {isPublic && (

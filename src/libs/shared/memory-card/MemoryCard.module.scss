@@ -32,6 +32,10 @@
       .title {
         @include glyph16Bold;
         @include ellipsis;
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
 
       .tagsContainer {
