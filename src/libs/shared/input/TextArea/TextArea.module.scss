@@ -1,0 +1,28 @@
+.container {
+  display: inline-block;
+  width: 100%;
+
+  .wrapper {
+    padding: 14px 20px;
+    transition: box-shadow 0.4s ease;
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px inset $gray200;
+
+    &:has(.textarea:focus) {
+      box-shadow: 0 0 0 1px inset $black;
+    }
+
+    &:has(.textarea.error) {
+      box-shadow: 0 0 0 1px inset $red;
+    }
+
+    .textarea {
+      @include glyph14Regular;
+      width: 100%;
+
+      &::placeholder {
+        color: $gray400;
+      }
+    }
+  }
+}
