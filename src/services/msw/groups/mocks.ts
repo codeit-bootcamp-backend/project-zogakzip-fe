@@ -1,6 +1,6 @@
-import { Group, Memory } from '@services/api/types'
+import { PublicGroup, GroupDetail, PrivateGroup } from '@services/api/types'
 
-export const MOCK_GROUPS: Group[] = [
+export const MOCK_PUBLIC_GROUPS: PublicGroup[] = [
   {
     id: 1,
     name: '달봉이네 가족',
@@ -16,8 +16,8 @@ export const MOCK_GROUPS: Group[] = [
     id: 2,
     name: '그룹2',
     introduction: '그룹2 소개',
-    imageUrl: '/images/image-example.png',
-    isPublic: false,
+    imageUrl: null,
+    isPublic: true,
     likeCount: 2,
     badgeCount: 2,
     postCount: 2,
@@ -36,44 +36,50 @@ export const MOCK_GROUPS: Group[] = [
   },
 ]
 
-export const MOCK_MEMORIES: Memory[] = [
+export const MOCK_PRIVATE_GROUPS: PrivateGroup[] = [
   {
-    id: 1,
-    nickname: '달봉이',
-    title: '달봉이네 가족',
-    imageUrl: '/images/image-example.png',
-    tags: ['태그1'],
-    location: '서울',
-    moment: '2024-01-22',
-    isPublic: true,
-    likeCount: 17001,
-    commentCount: 1,
-    createdAt: '2024-01-22T07:47:49.803Z',
-  },
-  {
-    id: 2,
-    nickname: '달봉이',
-    title: '달봉이네 가족',
-    imageUrl: '/images/image-example.png',
-    tags: ['태그1', '태그2'],
-    location: '서울',
-    moment: '2024-01-22',
+    id: 4,
+    name: '비공개 그룹1',
+    introduction: null,
+    imageUrl: null,
     isPublic: false,
-    likeCount: 17589,
-    commentCount: 1,
-    createdAt: '2024-01-22T07:47:49.803Z',
+    likeCount: 4,
+    badgeCount: null,
+    postCount: 4,
+    createdAt: '2024-02-22T07:47:49.803Z',
   },
   {
-    id: 3,
-    nickname: '달봉이',
-    title: '달봉이네 가족',
-    imageUrl: '/images/image-example.png',
-    tags: ['태그1', '태그2'],
-    location: '서울',
-    moment: '2024-01-22',
-    isPublic: true,
-    likeCount: 17589,
-    commentCount: 1,
-    createdAt: '2024-01-22T07:47:49.803Z',
+    id: 5,
+    name: '비공개 그룹2',
+    introduction: null,
+    imageUrl: null,
+    isPublic: false,
+    likeCount: 5,
+    badgeCount: null,
+    postCount: 5,
+    createdAt: '2024-02-22T07:47:49.803Z',
+  },
+  {
+    id: 6,
+    name: '비공개 그룹3',
+    introduction: null,
+    imageUrl: null,
+    isPublic: false,
+    likeCount: 6,
+    badgeCount: null,
+    postCount: 6,
+    createdAt: '2024-02-22T07:47:49.803Z',
   },
 ]
+
+export const MOCK_GROUP_DETAIL: GroupDetail = {
+  id: 1,
+  name: '인천 앞바다에서 무려 60cm 월척을 낚다!',
+  imageUrl: '/images/image-example.png',
+  isPublic: true,
+  likeCount: 17589,
+  badges: ['badge1', 'badge2', 'badge3'],
+  postCount: 1,
+  createdAt: '2024-01-22T07:47:49.803Z',
+  introduction: '인천 앞바다에서 월척을 낚았습니다!\n가족들과 기억에 오래도록 남을 멋진 하루였어요 가족들과 기억에 오래도록 남을 멋진 하루였어요 가족들과 기억에 오래도록 남을 멋진 하루였어요\n\n인천 앞바다에서 월척을 낚았습니다!\n가족들과 기억에 오래도록 남을 멋진 하루였어요\n\n인천 앞바다에서 월척을 낚았습니다!',
+}
