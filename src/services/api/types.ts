@@ -1,14 +1,20 @@
 // enum
-export enum SortBy {
+export enum SortByGroups {
   mostPosted = 'mostPosted',
   latest = 'latest',
   mostLiked = 'mostLiked',
   mostBadge = 'mostBadge',
 }
 
+export enum SortByMemories {
+  latest = 'latest',
+  mostCommented = 'mostCommented',
+  mostLiked = 'mostLiked',
+}
+
 // group
 export type GroupsSearchParams = {
-  sortBy: SortBy,
+  sortBy: SortByGroups,
   keyword: string,
   isPublic: boolean
 }
@@ -25,23 +31,10 @@ export type Group = {
   createdAt: string
 }
 
-// TODO: 추후 필요없으면 삭제 하기
-export type PrivateGroup = {
-  id: number,
-  name: string,
-  introduction: null,
-  imageUrl: null,
-  isPublic: false,
-  likeCount: number,
-  badgeCount: null,
-  postCount: number,
-  createdAt: string
-}
-
 export type GroupDetail = {
   id: number,
   name: string,
-  imageUrl: string,
+  imageUrl: string | null,
   isPublic: boolean,
   likeCount: number,
   badges: string[],
@@ -51,29 +44,21 @@ export type GroupDetail = {
 }
 
 // post
-export type PublicMemory = {
+export type MemoriesSearchParams = {
+  sortBy: SortByMemories,
+  keyword: string,
+  isPublic: boolean
+}
+
+export type Memory = {
   id: number,
   nickname: string,
   title: string,
   imageUrl: string | null,
   tags: string[],
-  location: string,
-  moment: string,
-  isPublic: true,
-  likeCount: number,
-  commentCount: number,
-  createdAt: string
-}
-
-export type PrivateMemory = {
-  id: number,
-  nickname: string,
-  title: string,
-  imageUrl: null,
-  tags: [],
-  location: null,
-  moment: null,
-  isPublic: false,
+  location: string | null,
+  moment: string | null,
+  isPublic: boolean,
   likeCount: number,
   commentCount: number,
   createdAt: string
@@ -81,7 +66,7 @@ export type PrivateMemory = {
 
 export type MemoryDetail = {
   content: string
-} & PublicMemory
+} & Memory
 
 // comments
 export type Comment = {

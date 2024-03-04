@@ -1,6 +1,6 @@
-import { PublicMemory, MemoryDetail, PrivateMemory } from '@services/api/types'
+import { Memory, MemoryDetail } from '@services/api/types'
 
-export const MOCK_PUBLIC_MEMORIES: PublicMemory[] = [
+export const MOCK_MEMORIES: Memory[] = [
   {
     id: 1,
     nickname: '달봉이',
@@ -40,9 +40,74 @@ export const MOCK_PUBLIC_MEMORIES: PublicMemory[] = [
     commentCount: 1,
     createdAt: '2024-01-22T07:47:49.803Z',
   },
+  {
+    id: 4,
+    nickname: '달봉이',
+    title: '달봉이네 가족',
+    imageUrl: null,
+    tags: [],
+    location: '제주도 서귀포시',
+    moment: '2024-01-22',
+    isPublic: true,
+    likeCount: 123,
+    commentCount: 1,
+    createdAt: '2024-01-22T07:47:49.803Z',
+  },
+  {
+    id: 5,
+    nickname: '달봉이',
+    title: '달봉이네 가족',
+    imageUrl: null,
+    tags: [],
+    location: '제주도 서귀포시',
+    moment: '2024-01-22',
+    isPublic: true,
+    likeCount: 123,
+    commentCount: 1,
+    createdAt: '2024-01-22T07:47:49.803Z',
+  },
+  {
+    id: 6,
+    nickname: '달봉이',
+    title: '달봉이네 가족',
+    imageUrl: '/images/image-example.png',
+    tags: [],
+    location: '제주도 서귀포시',
+    moment: '2024-01-22',
+    isPublic: true,
+    likeCount: 123,
+    commentCount: 1,
+    createdAt: '2024-01-22T07:47:49.803Z',
+  },
+  {
+    id: 7,
+    nickname: '달봉이',
+    title: '달봉이네 가족',
+    imageUrl: null,
+    tags: [],
+    location: '제주도 서귀포시',
+    moment: '2024-01-22',
+    isPublic: true,
+    likeCount: 123,
+    commentCount: 1,
+    createdAt: '2024-01-22T07:47:49.803Z',
+  },
+  {
+    id: 8,
+    nickname: '달봉이',
+    title: '달봉이네 가족',
+    imageUrl: '/images/image-example.png',
+    tags: [],
+    location: '제주도 서귀포시',
+    moment: '2024-01-22',
+    isPublic: true,
+    likeCount: 123,
+    commentCount: 1,
+    createdAt: '2024-01-22T07:47:49.803Z',
+  },
 ]
 
-export const MOCK_PRIVATE_MEMORIES: PrivateMemory[] = [
+export const MOCK_PRIVATE_MEMORIES: Memory[] = [
   {
     id: 4,
     nickname: '달봉이',

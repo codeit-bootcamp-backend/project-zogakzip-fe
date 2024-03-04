@@ -16,3 +16,7 @@ export const META_HOME = {
 export const META_GROUPS = {
   title: '그룹 목록',
 }
+
+export const META_GROUP_DETAIL = {
+  title: '그룹 상세',
+}

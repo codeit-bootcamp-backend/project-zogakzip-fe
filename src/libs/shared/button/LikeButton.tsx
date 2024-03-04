@@ -7,14 +7,16 @@ import Icon from '../icon/Icon'
 const cx = classNames.bind(styles)
 
 type LikeButtonProps = {
-
+  type: 'group' | 'post'
+  id: number
 }
 
-const LikeButton = ({ }: LikeButtonProps) => {
+const LikeButton = ({ type, id }: LikeButtonProps) => {
   // TODO: 내부에서 바로 API 처리하기
   // TODO: 꽃 날리는 애니메이션
   const handleSendLike = () => {
-    console.log('좋아요 보내기')
+    if (type === 'group') console.log(`그룹 ${id}번 공감 보내기`)
+    else console.log(`추억 ${id}번 공감 보내기`)
   }
 
   return (

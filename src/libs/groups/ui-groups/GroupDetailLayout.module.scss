@@ -1,0 +1,79 @@
+.container {
+  @include flexbox(60px, row, space-between, stretch);
+  height: 273px;
+
+  .image {
+    border-right: 6px;
+    object-fit: cover;
+  }
+
+  .detailContainer {
+    @include flexbox(35px, column, space-between, stretch);
+    flex: 1;
+
+    .top {
+      @include flexbox(20px, column, flex-start, stretch);
+
+      .header {
+        @include flexbox(normal, row, space-between, center);
+
+        .left {
+          @include flexbox(15px, row, flex-start, center);
+          @include glyph16Regular;
+
+          .verticalLine {
+            color: $gray400;
+          }
+
+          .isPublic {
+            color: $gray500;
+          }
+        }
+      }
+
+      .body {
+        display: grid;
+        gap: 40px;
+        grid-template-columns: minmax(0, 1fr) auto;
+
+        .name {
+          @include glyph30Bold;
+          @include ellipsis;
+        }
+
+        .countContainer {
+          @include flexbox(30px, row, flex-start, center);
+          margin-right: 18px;
+
+          .countWrapper {
+            @include glyph18Bold;
+
+            .count {
+              margin-left: 10px;
+            }
+          }
+
+          .verticalLine {
+            @include glyph18Regular;
+            color: $gray400;
+          }
+        }
+      }
+
+      .introduction {
+        @include glyph18Regular(24px);
+        @include ellipsis(2);
+      }
+    }
+
+    .bottom {
+      @include flexbox(normal, row, space-between, flex-end);
+
+      .badgesContainer {
+      }
+
+      .likeButtonWrapper {
+      }
+    }
+  }
+}

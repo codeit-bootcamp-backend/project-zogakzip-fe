@@ -1,4 +1,4 @@
-import { Group, GroupDetail, PrivateGroup } from '@services/api/types'
+import { Group, GroupDetail } from '@services/api/types'
 
 export const MOCK_GROUPS: Group[] = [
   {
@@ -69,7 +69,7 @@ export const MOCK_GROUPS: Group[] = [
   },
 ]
 
-export const MOCK_PRIVATE_GROUPS: PrivateGroup[] = [
+export const MOCK_PRIVATE_GROUPS: Group[] = [
   {
     id: 4,
     name: '비공개 그룹1',
@@ -177,6 +177,6 @@ export const MOCK_GROUP_DETAIL: GroupDetail = {
   likeCount: 17589,
   badges: ['badge1', 'badge2', 'badge3'],
   postCount: 1,
-  createdAt: '2024-01-22T07:47:49.803Z',
-  introduction: '인천 앞바다에서 월척을 낚았습니다!\n가족들과 기억에 오래도록 남을 멋진 하루였어요 가족들과 기억에 오래도록 남을 멋진 하루였어요 가족들과 기억에 오래도록 남을 멋진 하루였어요\n\n인천 앞바다에서 월척을 낚았습니다!\n가족들과 기억에 오래도록 남을 멋진 하루였어요\n\n인천 앞바다에서 월척을 낚았습니다!',
+  createdAt: '2024-03-02T07:47:49.803Z',
+  introduction: '인천 앞바다에서 월척을 낚았습니다!',
 }

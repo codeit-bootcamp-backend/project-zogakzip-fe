@@ -1,0 +1,20 @@
+.container {
+  margin: 0 auto;
+
+  .header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+
+    .title {
+      @include glyph24Bold;
+      grid-column: 2;
+      text-align: center;
+    }
+
+    .buttonWrapper {
+      grid-column: 3;
+      justify-self: end;
+    }
+  }
+}

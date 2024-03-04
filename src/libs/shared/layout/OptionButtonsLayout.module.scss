@@ -1,0 +1,12 @@
+.container {
+  @include flexbox(40px, row);
+
+  .edit,
+  .delete {
+    @include glyph14Regular;
+  }
+
+  .delete {
+    color: $gray500;
+  }
+}

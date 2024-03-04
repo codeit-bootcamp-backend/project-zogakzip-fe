@@ -16,6 +16,10 @@
     .header {
       @include flexbox(10px, row, flex-start, center);
 
+      .diffDays {
+        @include glyph14Regular;
+      }
+
       .verticalLine {
         @include glyph14Regular;
         color: $gray400;

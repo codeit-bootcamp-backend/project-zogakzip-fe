@@ -2,10 +2,10 @@ import classNames from 'classnames/bind'
 import styles from './GroupCard.module.scss'
 import Image from 'next/image'
 import { Group } from '@services/api/types'
-import DiffDay from './DiffDay'
 import Icon from '../icon/Icon'
 import formatLikeCount from '../util-util/formatLikeCount'
 import Link from 'next/link'
+import { differenceInDays } from 'date-fns/differenceInDays'
 
 const cx = classNames.bind(styles)
 
@@ -23,8 +23,7 @@ const GroupCard = ({ card }: GroupCardProps) => {
       </Link>
       <div className={cx('contentContainer')}>
         <div className={cx('header')}>
-          {/* TODO: 레이아웃 시프트 문제 해결 */}
-          <DiffDay createdAt={createdAt} />
+          <div className={cx('diffDays')}>D+{differenceInDays(new Date(), createdAt)}</div>
           <span className={cx('verticalLine')}>|</span>
           <div className={cx('isPublic')}>{isPublic ? '공개' : '비공개'}</div>
         </div>

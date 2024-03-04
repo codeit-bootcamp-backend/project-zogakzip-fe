@@ -1,0 +1,11 @@
+.container {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  margin-block: 60px;
+}
+
+.emptyContainer {
+  @include flexbox(180px, column, flex-start, center);
+  margin: 120px auto 264px;
+}

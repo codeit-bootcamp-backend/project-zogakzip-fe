@@ -1,25 +1,27 @@
 import classNames from 'classnames/bind'
 import styles from './MemoryCard.module.scss'
-import { PrivateMemory, PublicMemory } from '@services/api/types'
+import { Memory } from '@services/api/types'
 import Image from 'next/image'
 import Icon from '../icon/Icon'
-import formatDate from '../util-util/formatDate'
 import formatLikeCount from '../util-util/formatLikeCount'
 import Link from 'next/link'
+import { format } from 'date-fns/format'
 
 const cx = classNames.bind(styles)
 
 type MemoryCardProps = {
-  card: PublicMemory | PrivateMemory
+  card: Memory
 }
 
 const MemoryCard = ({ card }: MemoryCardProps) => {
   const { id, nickname, isPublic, title, tags, location, moment, commentCount, likeCount, imageUrl } = card
   return (
     <div className={cx('container')}>
-      <Link href={`/posts/${id}`}>
-        {isPublic && <Image className={cx('image')} src={imageUrl || '/images/default-image.svg'} width={335} height={335} alt='그룹 사진' />}
-      </Link>
+      {isPublic && (
+        <Link href={`/posts/${id}`}>
+          <Image className={cx('image')} src={imageUrl || '/images/default-image.svg'} width={335} height={335} alt='그룹 사진' />
+        </Link>
+      )}
       <div className={cx('contentContainer')}>
         <div className={cx('header')}>
           <div className={cx('nickname')}>{nickname}</div>
@@ -40,8 +42,7 @@ const MemoryCard = ({ card }: MemoryCardProps) => {
         <div className={cx('footer')}>
           {isPublic
             && (
-              // suppressHydrationWarning: Date 함수가 hydration error를 발생시킬 것이 우려되어 추가함
-              <div suppressHydrationWarning className={cx('mapInfo')}>{`${location}  ·  ${formatDate(moment)}`}</div>
+              <div className={cx('mapInfo')}>{`${location}  ·  ${format(new Date(moment ?? ''), 'yy.MM.dd')}`}</div>
             )}
           <div className={cx('countInfo')}>
             <div className={cx('countContainer')}>
