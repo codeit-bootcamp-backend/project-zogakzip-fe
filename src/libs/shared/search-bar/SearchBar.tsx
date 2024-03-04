@@ -10,10 +10,10 @@ import { useRef } from 'react'
 const cx = classNames.bind(styles)
 
 type SearchBarProps = {
-
+  placeholder: string
 }
 
-const SearchBar = ({ }: SearchBarProps) => {
+const SearchBar = ({ placeholder }: SearchBarProps) => {
   const inputRef = useRef<HTMLInputElement>(null)
   const searchParams = useSearchParams()
   const router = useRouter()
@@ -38,7 +38,7 @@ const SearchBar = ({ }: SearchBarProps) => {
         ref={inputRef}
         id='search'
         className={cx('input')}
-        placeholder='그룹명을 검색해 주세요'
+        placeholder={placeholder}
         defaultValue={keyword || undefined}
       />
     </form>

@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind'
 import styles from './GroupCard.module.scss'
 import Image from 'next/image'
-import { PrivateGroup, PublicGroup } from '@services/api/types'
+import { Group } from '@services/api/types'
 import DiffDay from './DiffDay'
 import Icon from '../icon/Icon'
 import formatLikeCount from '../util-util/formatLikeCount'
@@ -10,7 +10,7 @@ import Link from 'next/link'
 const cx = classNames.bind(styles)
 
 type GroupCardProps = {
-  card: PublicGroup | PrivateGroup
+  card: Group
 }
 
 const GroupCard = ({ card }: GroupCardProps) => {
@@ -23,6 +23,7 @@ const GroupCard = ({ card }: GroupCardProps) => {
       </Link>
       <div className={cx('contentContainer')}>
         <div className={cx('header')}>
+          {/* TODO: 레이아웃 시프트 문제 해결 */}
           <DiffDay createdAt={createdAt} />
           <span className={cx('verticalLine')}>|</span>
           <div className={cx('isPublic')}>{isPublic ? '공개' : '비공개'}</div>

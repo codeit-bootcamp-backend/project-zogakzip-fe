@@ -1,0 +1,8 @@
+.container {
+  @include flexbox(40px, row, flex-start, center);
+
+  .tabContainer {
+    @include flexbox(10px, row, flex-start, center);
+    flex-shrink: 0;
+  }
+}

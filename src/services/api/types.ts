@@ -1,24 +1,31 @@
 // enum
 export enum SortBy {
-  latest = 'latest',
   mostPosted = 'mostPosted',
+  latest = 'latest',
   mostLiked = 'mostLiked',
   mostBadge = 'mostBadge',
 }
 
 // group
-export type PublicGroup = {
+export type GroupsSearchParams = {
+  sortBy: SortBy,
+  keyword: string,
+  isPublic: boolean
+}
+
+export type Group = {
   id: number,
   name: string,
-  introduction: string,
+  introduction: string | null,
   imageUrl: string | null,
-  isPublic: true,
+  isPublic: boolean,
   likeCount: number,
-  badgeCount: number,
+  badgeCount: number | null,
   postCount: number,
   createdAt: string
 }
 
+// TODO: 추후 필요없으면 삭제 하기
 export type PrivateGroup = {
   id: number,
   name: string,
