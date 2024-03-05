@@ -1,16 +1,16 @@
 import { HttpResponse, delay, http } from 'msw'
 import addBasePrefix from '../util/addBasePrefix'
-import { MOCK_MEMORIES, MOCK_MEMORY_DETAIL } from './mocks'
+import { MOCK_POSTS, MOCK_POST_DETAIL } from './mocks'
 
 const postsHandler = [
   http.get(addBasePrefix('/groups/:groupId/posts'), async () => {
     await delay()
-    return HttpResponse.json(MOCK_MEMORIES)
-    // return HttpResponse.json(MOCK_PRIVATE_MEMORIES)
+    return HttpResponse.json(MOCK_POSTS)
+    // return HttpResponse.json(MOCK_PRIVATE_POSTS)
   }),
   http.get(addBasePrefix('/posts/:postId'), async () => {
     await delay()
-    return HttpResponse.json(MOCK_MEMORY_DETAIL)
+    return HttpResponse.json(MOCK_POST_DETAIL)
   }),
 ]
 

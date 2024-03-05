@@ -1,6 +1,6 @@
-import { Memory, MemoryDetail } from '@services/api/types'
+import { Post, PostDetail } from '@services/api/types'
 
-export const MOCK_MEMORIES: Memory[] = [
+export const MOCK_POSTS: Post[] = [
   {
     id: 1,
     nickname: '달봉이',
@@ -107,7 +107,7 @@ export const MOCK_MEMORIES: Memory[] = [
   },
 ]
 
-export const MOCK_PRIVATE_MEMORIES: Memory[] = [
+export const MOCK_PRIVATE_POSTS: Post[] = [
   {
     id: 4,
     nickname: '달봉이',
@@ -149,7 +149,7 @@ export const MOCK_PRIVATE_MEMORIES: Memory[] = [
   },
 ]
 
-export const MOCK_MEMORY_DETAIL: MemoryDetail = {
+export const MOCK_POST_DETAIL: PostDetail = {
   id: 1,
   nickname: '달봉이',
   title: '달봉이네 가족',

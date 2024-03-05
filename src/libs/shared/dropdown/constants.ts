@@ -1,4 +1,4 @@
-import { SortByGroups, SortByMemories } from '@services/api/types'
+import { SortByGroups, SortByPosts } from '@services/api/types'
 
 export const SORT_BY_GROUPS_FILTERS = [
   {
@@ -19,17 +19,17 @@ export const SORT_BY_GROUPS_FILTERS = [
   },
 ]
 
-export const SORT_BY_MEMORIES_FILTERS = [
+export const SORT_BY_POSTS_FILTERS = [
   {
-    data: SortByMemories.mostLiked,
+    data: SortByPosts.mostLiked,
     text: '공감순',
   },
   {
-    data: SortByMemories.latest,
+    data: SortByPosts.latest,
     text: '최신순',
   },
   {
-    data: SortByMemories.mostCommented,
+    data: SortByPosts.mostCommented,
     text: '공감순',
   },
 ]

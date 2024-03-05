@@ -1,16 +1,16 @@
 import classNames from 'classnames/bind'
 import styles from './page.module.scss'
-import { META_GROUP_DETAIL } from '@app/_meta'
-import { SortByMemories } from '@services/api/types'
+import { META_POST_DETAIL } from '@app/_meta'
+import { SortByPosts } from '@services/api/types'
 import convertIdParamToNumber from '@libs/shared/util-util/convertIdParamToNumber'
 import GroupDetail from '@libs/groups/feature-groups/GroupDetail'
 import Divider from '@libs/shared/layout/Divider'
 import SectionLayout from '@libs/shared/layout/SectionLayout'
 import Button from '@libs/shared/button/Button'
 import Filters from '@libs/shared/filters/Filters'
-import { SORT_BY_MEMORIES_FILTERS } from '@libs/shared/dropdown/constants'
+import { SORT_BY_POSTS_FILTERS } from '@libs/shared/dropdown/constants'
 import Link from 'next/link'
-import MemoriesList from '@libs/groups/feature-groups/MemoriesList'
+import PostsList from '@libs/posts/feature-posts/PostsList'
 
 const cx = classNames.bind(styles)
 
@@ -29,7 +29,7 @@ const GroupDetailPage = ({ params, searchParams }: GroupDetailPageProps) => {
     isPublic: isPublicParam,
     keyword = '',
   } = searchParams
-  const sortBy = SortByMemories[sortByParam as keyof typeof SortByMemories] || SortByMemories.mostLiked
+  const sortBy = SortByPosts[sortByParam as keyof typeof SortByPosts] || SortByPosts.mostLiked
   const isPublic = !(isPublicParam === 'false')
 
   const { groupId: groupIdParams } = params
@@ -50,10 +50,10 @@ const GroupDetailPage = ({ params, searchParams }: GroupDetailPageProps) => {
           <>
             <Filters
               placeholder='태그 혹은 제목을 입력해 주세요'
-              filters={SORT_BY_MEMORIES_FILTERS}
+              filters={SORT_BY_POSTS_FILTERS}
               currentData={sortBy}
             />
-            <MemoriesList
+            <PostsList
               groupId={groupId}
               searchParams={{ sortBy, isPublic, keyword }}
             />
@@ -64,5 +64,5 @@ const GroupDetailPage = ({ params, searchParams }: GroupDetailPageProps) => {
   )
 }
 
-export const metadata = META_GROUP_DETAIL
+export const metadata = META_POST_DETAIL
 export default GroupDetailPage

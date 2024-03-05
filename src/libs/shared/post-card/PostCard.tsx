@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind'
-import styles from './MemoryCard.module.scss'
-import { Memory } from '@services/api/types'
+import styles from './PostCard.module.scss'
+import { Post } from '@services/api/types'
 import Image from 'next/image'
 import Icon from '../icon/Icon'
 import formatLikeCount from '../util-util/formatLikeCount'
@@ -9,11 +9,11 @@ import { format } from 'date-fns/format'
 
 const cx = classNames.bind(styles)
 
-type MemoryCardProps = {
-  card: Memory
+type PostCardProps = {
+  card: Post
 }
 
-const MemoryCard = ({ card }: MemoryCardProps) => {
+const PostCard = ({ card }: PostCardProps) => {
   const { id, nickname, isPublic, title, tags, location, moment, commentCount, likeCount, imageUrl } = card
   return (
     <div className={cx('container')}>
@@ -60,4 +60,4 @@ const MemoryCard = ({ card }: MemoryCardProps) => {
   )
 }
 
-export default MemoryCard
+export default PostCard

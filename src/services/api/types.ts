@@ -6,7 +6,7 @@ export enum SortByGroups {
   mostBadge = 'mostBadge',
 }
 
-export enum SortByMemories {
+export enum SortByPosts {
   latest = 'latest',
   mostCommented = 'mostCommented',
   mostLiked = 'mostLiked',
@@ -44,13 +44,13 @@ export type GroupDetail = {
 }
 
 // post
-export type MemoriesSearchParams = {
-  sortBy: SortByMemories,
+export type PostsSearchParams = {
+  sortBy: SortByPosts,
   keyword: string,
   isPublic: boolean
 }
 
-export type Memory = {
+export type Post = {
   id: number,
   nickname: string,
   title: string,
@@ -64,9 +64,9 @@ export type Memory = {
   createdAt: string
 }
 
-export type MemoryDetail = {
+export type PostDetail = {
   content: string
-} & Memory
+} & Post
 
 // comments
 export type Comment = {
