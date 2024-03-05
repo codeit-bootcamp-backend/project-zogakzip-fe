@@ -20,3 +20,7 @@ export const META_GROUPS = {
 export const META_GROUP_DETAIL = {
   title: '그룹 상세',
 }
+
+export const META_POST_DETAIL = {
+  title: '추억 상세',
+}

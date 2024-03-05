@@ -69,7 +69,7 @@ export type PostDetail = {
 } & Post
 
 // comments
-export type Comment = {
+export type CommentType = {
   id: number,
   nickname: string,
   content: string,

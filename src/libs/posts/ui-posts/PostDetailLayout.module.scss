@@ -1,0 +1,79 @@
+.titleContainer {
+  @include flexbox(32px, column, flex-start, stretch);
+
+  .top {
+    @include flexbox(20px, column, flex-start, stretch);
+
+    .header {
+      @include flexbox(normal, row, space-between, center);
+
+      .left {
+        @include flexbox(20px, row, flex-start, center);
+        @include glyph16Regular;
+
+        .verticalLine {
+          color: $gray400;
+        }
+
+        .isPublic {
+          color: $gray500;
+        }
+      }
+    }
+
+    .title {
+      @include glyph30Bold;
+    }
+
+    .tags {
+      @include flexbox(normal, row);
+      flex-wrap: wrap;
+      gap: 5px 10px;
+
+      .tag {
+        @include glyph14Regular;
+        color: $gray400;
+      }
+    }
+  }
+
+  .bottom {
+    @include flexbox(normal, row, space-between, flex-end);
+
+    .left {
+      @include flexbox(35px, row, flex-start, center);
+
+      .mapInfo {
+        @include glyph16Bold;
+        white-space: pre;
+      }
+
+      .countInfo {
+        @include flexbox(20px, row, flex-start, center);
+
+        .countContainer {
+          @include flexbox(5px, row, flex-start, center);
+
+          .count {
+            @include glyph14Regular;
+            color: $gray500;
+          }
+        }
+      }
+    }
+  }
+}
+
+.contentContainer {
+  width: 780px;
+  margin: 0 auto 120px;
+
+  .image {
+    object-fit: cover;
+  }
+
+  .content {
+    @include glyph20Regular(28px);
+    margin-top: 60px;
+  }
+}

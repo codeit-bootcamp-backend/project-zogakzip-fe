@@ -1,0 +1,23 @@
+.container {
+  .header {
+    @include flexbox(10px, row, flex-start, center);
+    margin-bottom: 16px;
+
+    .nickname {
+      @include glyph16Medium;
+    }
+
+    .createdAt {
+      @include glyph16Regular;
+      color: $gray400;
+    }
+  }
+
+  .body {
+    @include flexbox(normal, row, space-between, flex-end);
+
+    .content {
+      @include glyph16Medium;
+    }
+  }
+}

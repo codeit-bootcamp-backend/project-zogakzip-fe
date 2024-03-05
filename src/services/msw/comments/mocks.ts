@@ -1,6 +1,6 @@
-import { Comment } from '@services/api/types'
+import { CommentType } from '@services/api/types'
 
-export const MOCK_COMMENTS: Comment[] = [
+export const MOCK_COMMENTS: CommentType[] = [
   {
     id: 1,
     nickname: '달봉이',
