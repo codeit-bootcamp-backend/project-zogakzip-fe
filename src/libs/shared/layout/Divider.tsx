@@ -4,13 +4,14 @@ import styles from './Divider.module.scss'
 const cx = classNames.bind(styles)
 
 type DividerProps = {
-  marginBlock: string
+  marginTop: string
+  marginBottom: string
   color: 'black' | 'gray'
 }
 
-const Divider = ({ marginBlock, color }: DividerProps) => {
+const Divider = ({ marginTop, marginBottom, color }: DividerProps) => {
   return (
-    <hr className={cx('line', color)} style={{ marginBlock }} />
+    <hr className={cx('line', color)} style={{ marginTop, marginBottom }} />
   )
 }
 

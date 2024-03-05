@@ -38,7 +38,7 @@ const GroupDetailPage = ({ params, searchParams }: GroupDetailPageProps) => {
   return (
     <main className={cx('container')}>
       <GroupDetail groupId={groupId} />
-      <Divider marginBlock='120px' color='gray' />
+      <Divider marginTop='120px' marginBottom='120px' color='gray' />
       <SectionLayout
         title='추억 목록'
         headerButton={(
