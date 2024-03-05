@@ -171,12 +171,22 @@ export const MOCK_PRIVATE_GROUPS: Group[] = [
 
 export const MOCK_GROUP_DETAIL: GroupDetail = {
   id: 1,
-  name: '인천 앞바다에서 무려 60cm 월척을 낚다!',
+  name: '달봉이네 가족',
   imageUrl: '/images/image-example.png',
   isPublic: true,
   likeCount: 17589,
-  badges: ['badge1', 'badge2', 'badge3'],
+  badges: [
+    '👾  7일 연속 추억 등록',
+    '🌼  그룹 공감 1만 개 이상 받기',
+    '💖  게시글 공감 1만 개 이상 받기',
+    '👾  7일 연속 추억 등록',
+    '🌼  그룹 공감 1만 개 이상 받기',
+    '💖  게시글 공감 1만 개 이상 받기',
+    '👾  7일 연속 추억 등록',
+    '🌼  그룹 공감 1만 개 이상 받기',
+    '💖  게시글 공감 1만 개 이상 받기',
+  ],
   postCount: 1,
   createdAt: '2024-03-02T07:47:49.803Z',
-  introduction: '인천 앞바다에서 월척을 낚았습니다!',
+  introduction: '우리는 달봉이네 네 식구들이에요! 달봉이네 가족의 추억을 공유하고, 함께 기억을 만들어요!',
 }

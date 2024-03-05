@@ -11,9 +11,10 @@ type GroupDetailLayoutProps = {
   groupDetail: GroupDetail
   optionButtons: React.ReactNode
   likeButton: React.ReactNode
+  badgeCarousel: React.ReactNode
 }
 
-const GroupDetailLayout = ({ groupDetail, optionButtons, likeButton }: GroupDetailLayoutProps) => {
+const GroupDetailLayout = ({ groupDetail, optionButtons, likeButton, badgeCarousel }: GroupDetailLayoutProps) => {
   const { badges, imageUrl, introduction, isPublic, likeCount, name, postCount, createdAt } = groupDetail
   return (
     <div className={cx('container')}>
@@ -39,7 +40,13 @@ const GroupDetailLayout = ({ groupDetail, optionButtons, likeButton }: GroupDeta
           <p className={cx('introduction')}>{introduction}</p>
         </div>
         <div className={cx('bottom')}>
-          <div className={cx('badgesContainer')}>배지 캐러셀</div>
+          <div className={cx('badgesContainer')}>
+            <div className={cx('label')}>획득 배지</div>
+            {/* TODO: 캐러셀만 클라이언트 로딩 처리인 상태 개선 방법 생각해보기 */}
+            <div className={cx('carouselWrapper')}>
+              {badges.length > 0 && badgeCarousel}
+            </div>
+          </div>
           <div className={cx('likeButtonWrapper')}>{likeButton}</div>
         </div>
       </div>

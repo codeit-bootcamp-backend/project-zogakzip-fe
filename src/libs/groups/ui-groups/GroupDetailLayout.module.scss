@@ -70,9 +70,16 @@
       @include flexbox(normal, row, space-between, flex-end);
 
       .badgesContainer {
-      }
+        @include flexbox(20px, column, flex-start, stretch);
+        width: 994px;
 
-      .likeButtonWrapper {
+        .label {
+          @include glyph16Bold;
+        }
+
+        .carouselWrapper {
+          height: 52px;
+        }
       }
     }
   }
