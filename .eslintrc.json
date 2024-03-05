@@ -160,7 +160,8 @@
             "children": "never" // 자식 요소에서 중괄호 사용을 허용하지 않음
           }
         ],
-        "react/self-closing-comp": "warn", // self-closing 컴포넌트를 사용하도록 강제
+        // TODO: 개발 완료 후 주석 해제
+        "react/self-closing-comp": "off", // self-closing 컴포넌트를 사용하도록 강제
         "react/jsx-wrap-multilines": [ // 다중 줄의 JSX를 괄호로 감싸는 규칙 설정
           "error",
           {
