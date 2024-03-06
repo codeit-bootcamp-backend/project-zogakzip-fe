@@ -43,6 +43,14 @@ export type GroupDetail = {
   introduction: string
 }
 
+export type GroupFormInput = {
+  name: string,
+  introduction: string,
+  // PUT에 patch를 사용하고, image는 dirty 상태일 때만 전송될 예정
+  image?: File,
+  isPublic: boolean
+}
+
 // post
 export type PostsSearchParams = {
   sortBy: SortByPosts,

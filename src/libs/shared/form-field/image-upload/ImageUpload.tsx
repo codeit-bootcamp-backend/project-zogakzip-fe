@@ -13,6 +13,7 @@ type ImageUploadProps<
 > = {
   name: N
   rules?: ControllerProps<F, N>['rules']
+  defaultImageUrl?: string
 }
 
 const ImageUpload = <
@@ -21,6 +22,7 @@ const ImageUpload = <
 >({
   name,
   rules,
+  defaultImageUrl,
 }: ImageUploadProps<F, N>) => {
   const { setValue } = useFormContext()
   const inputRef = useRef<HTMLInputElement>(null)
@@ -40,7 +42,7 @@ const ImageUpload = <
           <>
             <TextField
               disabled
-              placeholder='파일을 선택해 주세요'
+              placeholder={defaultImageUrl ?? '파일을 선택해 주세요'}
               value={value?.name || ''}
             />
             <label>

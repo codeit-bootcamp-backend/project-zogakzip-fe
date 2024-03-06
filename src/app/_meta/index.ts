@@ -24,3 +24,7 @@ export const META_GROUP_DETAIL = {
 export const META_POST_DETAIL = {
   title: '추억 상세',
 }
+
+export const META_GROUP_CREATE = {
+  title: '그룹 만들기',
+}

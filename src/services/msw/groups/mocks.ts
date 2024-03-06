@@ -5,7 +5,7 @@ export const MOCK_GROUPS: Group[] = [
     id: 1,
     name: '달봉이네 가족',
     introduction: '우리는 달봉이',
-    imageUrl: null,
+    imageUrl: '/images/image-example.png',
     isPublic: true,
     likeCount: 17589,
     badgeCount: 1,
