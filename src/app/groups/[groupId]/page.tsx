@@ -1,5 +1,3 @@
-import classNames from 'classnames/bind'
-import styles from './page.module.scss'
 import { META_POST_DETAIL } from '@app/_meta'
 import { SortByPosts } from '@services/api/types'
 import convertIdParamToNumber from '@libs/shared/util-util/convertIdParamToNumber'
@@ -11,8 +9,7 @@ import Filters from '@libs/shared/filters/Filters'
 import { SORT_BY_POSTS_FILTERS } from '@libs/shared/dropdown/constants'
 import Link from 'next/link'
 import PostsList from '@libs/posts/feature-posts/PostsList'
-
-const cx = classNames.bind(styles)
+import PageLayout from '@libs/shared/layout/PageLayout'
 
 type GroupDetailPageProps = {
   params: { groupId: string }
@@ -36,7 +33,7 @@ const GroupDetailPage = ({ params, searchParams }: GroupDetailPageProps) => {
   const groupId = convertIdParamToNumber(groupIdParams)
 
   return (
-    <main className={cx('container')}>
+    <PageLayout paddingBlock='40px 120px'>
       <GroupDetail groupId={groupId} />
       <Divider marginTop='120px' marginBottom='120px' color='gray' />
       <SectionLayout
@@ -60,7 +57,7 @@ const GroupDetailPage = ({ params, searchParams }: GroupDetailPageProps) => {
           </>
         )}
       />
-    </main>
+    </PageLayout>
   )
 }
 

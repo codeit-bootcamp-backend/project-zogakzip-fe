@@ -1,12 +1,9 @@
-import classNames from 'classnames/bind'
-import styles from './page.module.scss'
 import { META_GROUPS } from '@app/_meta'
 import { SortByGroups } from '@services/api/types'
 import Filters from '@libs/shared/filters/Filters'
 import { SORT_BY_GROUPS_FILTERS } from '@libs/shared/dropdown/constants'
 import GroupsList from '../../libs/groups/feature-groups/GroupsList'
-
-const cx = classNames.bind(styles)
+import PageLayout from '@libs/shared/layout/PageLayout'
 
 type GroupsPageProps = {
   searchParams: Partial<{
@@ -26,14 +23,14 @@ const GroupsPage = ({ searchParams }: GroupsPageProps) => {
   const isPublic = !(isPublicParam === 'false')
 
   return (
-    <main className={cx('container')}>
+    <PageLayout paddingBlock='40px 120px'>
       <Filters
         placeholder='그룹명을 검색해 주세요'
         filters={SORT_BY_GROUPS_FILTERS}
         currentData={sortBy}
       />
       <GroupsList searchParams={{ sortBy, keyword, isPublic }} />
-    </main>
+    </PageLayout>
   )
 }
 
