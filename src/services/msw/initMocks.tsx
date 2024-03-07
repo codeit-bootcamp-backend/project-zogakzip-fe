@@ -11,7 +11,7 @@ const initMocks = async () => {
   } else {
     const { browserWorker } = await import('./browser')
     await browserWorker.start({ onUnhandledRequest: 'bypass' })
-  } // 처리되지 않은 요청이라도 통과시키도록
+  } // 참고: 처리되지 않은 요청이라도 통과시키도록
 }
 
 export default initMocks
