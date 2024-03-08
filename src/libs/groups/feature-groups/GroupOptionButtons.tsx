@@ -3,7 +3,7 @@
 import OptionButtonsLayout from '@libs/shared/layout/OptionButtonsLayout'
 import useModal from '@libs/shared/modal/useModal'
 import FormModal from '@libs/shared/modal/FormModal'
-import { DeleteFormInput, GroupDetail, GroupFormInput } from '@services/api/types'
+import { GroupDeleteFormInput, GroupDetail, GroupFormInput } from '@services/api/types'
 import GroupEditForm from './GroupEditForm'
 import GroupDeleteForm from './GroupDeleteForm'
 
@@ -22,7 +22,7 @@ const GroupOptionButtons = ({ groupId, groupDetail }: GroupOptionButtonsProps) =
     groupEditFormModal.closeModal()
   }
 
-  const handleDeleteGroup = (data: DeleteFormInput) => {
+  const handleDeleteGroup = (data: GroupDeleteFormInput) => {
     console.log(`delete group ${groupId}번`)
     console.log(data)
     groupDeleteFormModal.closeModal()

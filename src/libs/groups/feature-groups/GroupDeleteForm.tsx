@@ -1,13 +1,13 @@
 import AuthFormContent from '@libs/shared/form-field/AuthFormContent/AuthFormContent'
-import { DeleteFormInput } from '@services/api/types'
+import { GroupDeleteFormInput } from '@services/api/types'
 import { FormProvider, useForm } from 'react-hook-form'
 
 type GroupDeleteFormProps = {
-  onSubmit: (data: DeleteFormInput) => void
+  onSubmit: (data: GroupDeleteFormInput) => void
 }
 
 const GroupDeleteForm = ({ onSubmit }: GroupDeleteFormProps) => {
-  const methods = useForm<DeleteFormInput>()
+  const methods = useForm<GroupDeleteFormInput>()
   const { handleSubmit } = methods
   return (
     <FormProvider {...methods}>

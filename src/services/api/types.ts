@@ -12,18 +12,20 @@ export enum SortByPosts {
   mostLiked = 'mostLiked',
 }
 
-// 공통
-export type DeleteFormInput = {
-  password: string
-}
-
-// group
+// searchParams
 export type GroupsSearchParams = {
   sortBy: SortByGroups,
   keyword: string,
   isPublic: boolean
 }
 
+export type PostsSearchParams = {
+  sortBy: SortByPosts,
+  keyword: string,
+  isPublic: boolean
+}
+
+// group - data
 export type Group = {
   id: number,
   name: string,
@@ -48,6 +50,7 @@ export type GroupDetail = {
   introduction: string
 }
 
+// group - ipnput
 export type GroupFormInput = {
   name: string,
   introduction: string,
@@ -57,13 +60,9 @@ export type GroupFormInput = {
   password: string
 }
 
-// post
-export type PostsSearchParams = {
-  sortBy: SortByPosts,
-  keyword: string,
-  isPublic: boolean
-}
+export type GroupDeleteFormInput = Pick<GroupFormInput, 'password'>
 
+// post - data
 export type Post = {
   id: number,
   nickname: string,
@@ -82,20 +81,25 @@ export type PostDetail = {
   content: string
 } & Post
 
-export type PostFormInput = {
+// post - input
+export type PostCreateFormInput = {
   nickname: string,
   title: string,
   image?: File,
   content: string,
   tags: string[],
-  location: string
-  moment: string
-  isPublic: boolean
-  postPassword: string
+  location: string,
+  moment: string,
+  isPublic: boolean,
+  postPassword: string,
   groupPassword: string
 }
 
-// comments
+export type PostEditFormInput = Omit<PostCreateFormInput, 'groupPassword'>
+
+export type PostDeleteFormInput = Pick<PostCreateFormInput, 'postPassword'>
+
+// comment - data
 export type CommentType = {
   id: number,
   nickname: string,
