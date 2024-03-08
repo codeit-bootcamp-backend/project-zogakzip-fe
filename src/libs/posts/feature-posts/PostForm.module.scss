@@ -2,6 +2,10 @@
   @include flexbox(normal, row, space-between, flex-start);
   height: fit-content;
   margin-bottom: 60px;
+
+  &.edit {
+    width: 960px;
+  }
 }
 
 .divider {

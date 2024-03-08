@@ -12,7 +12,7 @@ const PostDetail = async ({ postId }: PostDetailProps) => {
   return (
     <PostDetailLayout
       postDetail={postDetail}
-      optionButtons={<PostOptionButtons postId={postId} />}
+      optionButtons={<PostOptionButtons postId={postId} postDetail={postDetail} />}
       likeButton={<LikeButton type='post' id={postId} />}
     />
   )

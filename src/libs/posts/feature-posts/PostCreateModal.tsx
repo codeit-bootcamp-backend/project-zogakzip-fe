@@ -6,20 +6,20 @@ import Icon from '@libs/shared/icon/Icon'
 import SectionLayout from '@libs/shared/layout/SectionLayout'
 import PostCreateForm from './PostCreateForm'
 import useModal from '@libs/shared/modal/useModal'
-import { PostFormInput } from '@services/api/types'
+import { PostCreateFormInput } from '@services/api/types'
 
 const cx = classNames.bind(styles)
 
 type PostCreateModalProps = {
   postCreateFormModal: ReturnType<typeof useModal>
   authCheckFormModal: ReturnType<typeof useModal>
-  onCreate: (data: PostFormInput) => void
-} & React.ComponentPropsWithoutRef<'dialog'>
+  onSubmit: (data: PostCreateFormInput) => void
+}
 
 const PostCreateModal = ({
   postCreateFormModal,
   authCheckFormModal,
-  onCreate,
+  onSubmit,
   ...restProps
 }: PostCreateModalProps) => {
   return (
@@ -46,7 +46,7 @@ const PostCreateModal = ({
         content={(
           <PostCreateForm
             authCheckFormModal={authCheckFormModal}
-            onCreate={onCreate}
+            onSubmit={onSubmit}
           />
         )}
       />

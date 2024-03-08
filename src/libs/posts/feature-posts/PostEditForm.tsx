@@ -2,46 +2,37 @@
 
 import classNames from 'classnames/bind'
 import styles from './PostForm.module.scss'
-import Button from '@libs/shared/button/Button'
+import { PostEditFormInput } from '@services/api/types'
 import { FormProvider, useForm } from 'react-hook-form'
-import { PostCreateFormInput } from '@services/api/types'
 import FieldLabel from '@libs/shared/input/FieldLabel/FieldLabel'
 import TextFieldConnect from '@libs/shared/form-field/TextFieldConnect'
 import ImageUploadConnect from '@libs/shared/form-field/ImageUploadConnect'
 import TextAreaConnect from '@libs/shared/form-field/TextAreaConnect'
+import TagsFieldConnect from '@libs/shared/form-field/TagsFieldConnect'
 import DatePickerConnect from '@libs/shared/form-field/DatePickerConnect'
 import ToggleConnect from '@libs/shared/form-field/ToggleConnect'
-import TagsFieldConnect from '@libs/shared/form-field/TagsFieldConnect'
-import useModal from '@libs/shared/modal/useModal'
-import FormModal from '@libs/shared/modal/FormModal'
-import AuthFormContent from '@libs/shared/form-field/AuthFormContent/AuthFormContent'
+import Button from '@libs/shared/button/Button'
 
 const cx = classNames.bind(styles)
 
-type PostCreateFormProps = {
-  authCheckFormModal: ReturnType<typeof useModal>
-  onSubmit: (data: PostCreateFormInput) => void
+type PostEditFormProps = {
+  defaultValues: Omit<PostEditFormInput, 'postPassword'>
+  defaultImageUrl?: string
+  onSubmit: (data: PostEditFormInput) => void
 }
 
-const PostCreateForm = ({
-  authCheckFormModal,
+const PostEditForm = ({
+  defaultValues,
+  defaultImageUrl,
   onSubmit,
-}: PostCreateFormProps) => {
-  // 참고: trigger 이후에 onChange 시 error 확인이 안돼서 넣었음. 렌더링 성능 확인 필요
-  const methods = useForm<PostCreateFormInput>({ defaultValues: { tags: [] }, mode: 'onChange' })
-  const { handleSubmit, trigger } = methods
-
-  const handleClickCompletedButton = async () => {
-    const isValid = await trigger()
-    if (isValid) {
-      authCheckFormModal.openModal()
-    }
-  }
+}: PostEditFormProps) => {
+  const methods = useForm<PostEditFormInput>({ defaultValues, mode: 'onChange' })
+  const { handleSubmit } = methods
 
   return (
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className={cx('container')}>
+        <div className={cx('container', 'edit')}>
           <div className={cx('section')}>
             <div className={cx('nickname')}>
               <FieldLabel label='닉네임' />
@@ -69,6 +60,7 @@ const PostCreateForm = ({
               <FieldLabel label='이미지' />
               <ImageUploadConnect
                 name='image'
+                defaultImageUrl={defaultImageUrl}
               />
             </div>
             <div className={cx('content')}>
@@ -122,11 +114,11 @@ const PostCreateForm = ({
               />
             </div>
             <div className={cx('postPassword')}>
-              <FieldLabel label='비밀번호 생성' />
+              <FieldLabel label='수정 권한 인증' />
               <TextFieldConnect
                 name='postPassword'
                 type='password'
-                placeholder='추억 비밀번호를 생성해 주세요'
+                placeholder='추억 비밀번호를 입력해 주세요'
                 rules={{
                   required: '필수 입력사항입니다.',
                   pattern: {
@@ -141,34 +133,13 @@ const PostCreateForm = ({
         <div className={cx('submitButton')}>
           <Button
             size='large'
-            onClick={(e) => {
-              e.preventDefault()
-              handleClickCompletedButton()
-            }}
-          >올리기
+            type='submit'
+          >수정하기
           </Button>
         </div>
-        <FormModal
-          title='추억 올리기'
-          titleMarginBottom='40px'
-          onClose={authCheckFormModal.closeModal}
-          ref={authCheckFormModal.modalRef}
-          content={
-            authCheckFormModal.isOpened
-              ? (
-                <AuthFormContent
-                  label='올리기 권한 인증'
-                  buttonText='제출하기'
-                  fieldName='groupPassword'
-                  placeholder='그룹 비밀번호를 입력해 주세요'
-                />
-              )
-              : undefined
-          }
-        />
       </form>
     </FormProvider>
   )
 }
 
-export default PostCreateForm
+export default PostEditForm

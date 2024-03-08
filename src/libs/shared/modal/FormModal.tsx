@@ -8,6 +8,7 @@ const cx = classNames.bind(styles)
 type FormModalProps = {
   title: string
   titleMarginBottom?: string
+  paddingInline?: string
   content?: React.ReactNode
   onClose: () => void
 } & Omit<React.ComponentPropsWithoutRef<'dialog'>, 'content'>
@@ -15,6 +16,7 @@ type FormModalProps = {
 const FormModal = forwardRef<HTMLDialogElement, FormModalProps>(({
   title,
   titleMarginBottom = '60px',
+  paddingInline,
   onClose,
   content,
   ...restProps
@@ -24,6 +26,7 @@ const FormModal = forwardRef<HTMLDialogElement, FormModalProps>(({
       ref={ref}
       onKeyDown={(e) => { if (e.key === 'Escape') onClose() }}
       className={cx('dialog')}
+      style={{ paddingInline }}
       {...restProps}
     >
       <button

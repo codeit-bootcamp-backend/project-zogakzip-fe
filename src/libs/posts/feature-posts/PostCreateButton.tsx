@@ -3,7 +3,7 @@
 import Button from '@libs/shared/button/Button'
 import useModal from '@libs/shared/modal/useModal'
 import PostCreateModal from './PostCreateModal'
-import { PostFormInput } from '@services/api/types'
+import { PostCreateFormInput } from '@services/api/types'
 
 type PostCreateButtonProps = {
   groupId: number
@@ -13,7 +13,7 @@ const PostCreateButton = ({ groupId }: PostCreateButtonProps) => {
   const postCreateFormModal = useModal()
   const authCheckFormModal = useModal()
 
-  const handleCreatePost = (data: PostFormInput) => {
+  const handleCreatePost = (data: PostCreateFormInput) => {
     console.log(`group ${groupId}번 create post`)
     console.log(data)
     postCreateFormModal.closeModal()
@@ -26,7 +26,7 @@ const PostCreateButton = ({ groupId }: PostCreateButtonProps) => {
       <PostCreateModal
         postCreateFormModal={postCreateFormModal}
         authCheckFormModal={authCheckFormModal}
-        onCreate={handleCreatePost}
+        onSubmit={handleCreatePost}
       />
     </>
   )
