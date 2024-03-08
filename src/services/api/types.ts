@@ -12,6 +12,11 @@ export enum SortByPosts {
   mostLiked = 'mostLiked',
 }
 
+// 공통
+export type DeleteFormInput = {
+  password: string
+}
+
 // group
 export type GroupsSearchParams = {
   sortBy: SortByGroups,
@@ -49,6 +54,7 @@ export type GroupFormInput = {
   // 참고: PUT에 patch를 사용하고, image는 dirty 상태일 때만 전송될 예정
   image?: File,
   isPublic: boolean
+  password: string
 }
 
 // post

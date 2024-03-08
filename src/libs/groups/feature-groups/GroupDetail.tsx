@@ -15,7 +15,7 @@ const GroupDetail = async ({ groupId }: GroupDetailProps) => {
   return (
     <GroupDetailLayout
       groupDetail={groupDetail}
-      optionButtons={<GroupOptionButtons groupId={groupId} />}
+      optionButtons={<GroupOptionButtons groupId={groupId} groupDetail={groupDetail} />}
       likeButton={<LikeButton type='group' id={groupId} />}
       badgeCarousel={<BadgeCarousel badges={groupDetail.badges} />}
     />

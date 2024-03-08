@@ -4,19 +4,16 @@ import { GroupFormInput } from '@services/api/types'
 import GroupForm from './GroupForm'
 
 type GroupEditFormProps = {
-  defaultValues: GroupFormInput
+  defaultValues: Omit<GroupFormInput, 'password'>
   defaultImageUrl?: string
+  onSubmit: (data: GroupFormInput) => void
 }
 
-const GroupEditForm = ({ defaultValues, defaultImageUrl }: GroupEditFormProps) => {
-  const handleEditGroup = (data: GroupFormInput) => {
-    console.log('create group')
-    console.log(data)
-  }
-
+const GroupEditForm = ({ defaultValues, defaultImageUrl, onSubmit }: GroupEditFormProps) => {
+  // TODO: 스크롤 시 화면 정중앙에서 벗어남
   return (
     <GroupForm
-      onSubmit={handleEditGroup}
+      onSubmit={onSubmit}
       defaultValues={defaultValues}
       defaultImageUrl={defaultImageUrl}
     />

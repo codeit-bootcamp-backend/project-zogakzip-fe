@@ -14,7 +14,7 @@ import TextAreaConnect from '@libs/shared/form-field/TextAreaConnect'
 const cx = classNames.bind(styles)
 
 type GroupFormProps = {
-  defaultValues?: GroupFormInput
+  defaultValues?: Omit<GroupFormInput, 'password'>
   defaultImageUrl?: string
   onSubmit: (data: GroupFormInput) => void
 }
