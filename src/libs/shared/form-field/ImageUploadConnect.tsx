@@ -1,13 +1,13 @@
 import classNames from 'classnames/bind'
-import styles from './ImageUpload.module.scss'
+import styles from './ImageUploadConnect.module.scss'
 import { Controller, ControllerProps, FieldPath, FieldValues, useFormContext } from 'react-hook-form'
 import { useRef } from 'react'
-import Button from '../../button/Button'
-import TextField from '../../input/TextField/TextField'
+import Button from '../button/Button'
+import TextField from '../input/TextField/TextField'
 
 const cx = classNames.bind(styles)
 
-type ImageUploadProps<
+type ImageUploadConnectProps<
   F extends FieldValues,
   N extends FieldPath<F>
 > = {
@@ -16,14 +16,14 @@ type ImageUploadProps<
   defaultImageUrl?: string
 }
 
-const ImageUpload = <
+const ImageUploadConnect = <
   F extends FieldValues,
   N extends FieldPath<F>
 >({
   name,
   rules,
   defaultImageUrl,
-}: ImageUploadProps<F, N>) => {
+}: ImageUploadConnectProps<F, N>) => {
   const { setValue } = useFormContext()
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -62,4 +62,4 @@ const ImageUpload = <
   )
 }
 
-export default ImageUpload
+export default ImageUploadConnect

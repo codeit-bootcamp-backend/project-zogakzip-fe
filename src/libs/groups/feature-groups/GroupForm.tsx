@@ -5,7 +5,7 @@ import styles from './GroupForm.module.scss'
 import { GroupFormInput } from '@services/api/types'
 import { FormProvider, useForm } from 'react-hook-form'
 import TextFieldConnect from '@libs/shared/form-field/TextFieldConnect'
-import ImageUpload from '@libs/shared/form-field/image-upload/ImageUpload'
+import ImageUploadConnect from '@libs/shared/form-field/ImageUploadConnect'
 import ToggleConnect from '@libs/shared/form-field/ToggleConnect'
 import Button from '@libs/shared/button/Button'
 import FieldLabel from '@libs/shared/input/FieldLabel/FieldLabel'
@@ -39,7 +39,7 @@ const GroupForm = ({ defaultValues, defaultImageUrl, onSubmit }: GroupFormProps)
           </div>
           <div className={cx('image')}>
             <FieldLabel label='대표 이미지' />
-            <ImageUpload
+            <ImageUploadConnect
               name='image'
               defaultImageUrl={defaultImageUrl}
             />
