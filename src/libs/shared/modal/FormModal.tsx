@@ -8,7 +8,7 @@ const cx = classNames.bind(styles)
 type FormModalProps = {
   title: string
   titleMarginBottom?: string
-  content: React.ReactNode
+  content?: React.ReactNode
   onClose: () => void
 } & Omit<React.ComponentPropsWithoutRef<'dialog'>, 'content'>
 

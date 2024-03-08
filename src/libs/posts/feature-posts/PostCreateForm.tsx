@@ -14,6 +14,7 @@ import ToggleConnect from '@libs/shared/form-field/ToggleConnect'
 import TagsFieldConnect from '@libs/shared/form-field/TagsFieldConnect'
 import useModal from '@libs/shared/modal/useModal'
 import FormModal from '@libs/shared/modal/FormModal'
+import AuthFormContent from '@libs/shared/form-field/AuthFormContent/AuthFormContent'
 
 const cx = classNames.bind(styles)
 
@@ -22,7 +23,6 @@ type PostCreateFormProps = {
   onCreate: (data: PostFormInput) => void
 }
 
-// TODO: 권한 인증 모달에 폼 내용 전달하기
 const PostCreateForm = ({
   authCheckFormModal,
   onCreate,
@@ -36,27 +36,6 @@ const PostCreateForm = ({
     if (isValid) {
       authCheckFormModal.openModal()
     }
-  }
-
-  const AuthGroupFormContent = ({ isOpened }: { isOpened: boolean }) => {
-    // 참고: 권함 모달이 open 상태일 때 groupPassword 필드가 필요함
-    if (!isOpened) return null
-    return (
-      <div className={cx('authFormContainer')}>
-        <div className={cx('groupPassword')}>
-          <FieldLabel label='올리기 권한 인증' />
-          <TextFieldConnect
-            name='groupPassword'
-            placeholder='그룹 비밀번호를 입력해 주세요'
-            type='password'
-            rules={{
-              validate: value => value.trim() !== '' || '필수 입력사항입니다.',
-            }}
-          />
-        </div>
-        <Button size='large' type='submit'>제출하기</Button>
-      </div>
-    )
   }
 
   return (
@@ -174,9 +153,18 @@ const PostCreateForm = ({
           titleMarginBottom='40px'
           onClose={authCheckFormModal.closeModal}
           ref={authCheckFormModal.modalRef}
-          content={(
-            <AuthGroupFormContent isOpened={authCheckFormModal.isOpened} />
-          )}
+          content={
+            authCheckFormModal.isOpened
+              ? (
+                <AuthFormContent
+                  label='올리기 권한 인증'
+                  buttonText='제출하기'
+                  fieldName='groupPassword'
+                  placeholder='그룹 비밀번호를 입력해 주세요'
+                />
+              )
+              : undefined
+          }
         />
       </form>
     </FormProvider>
