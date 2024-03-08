@@ -1,0 +1,17 @@
+.container {
+  @include flexbox(5px, row, flex-start, center);
+  width: fit-content;
+
+  .text {
+    @include glyph14Regular(18px);
+    color: $gray500;
+  }
+
+  .iconWrapper {
+    height: 16px;
+
+    & img {
+      vertical-align: baseline;
+    }
+  }
+}

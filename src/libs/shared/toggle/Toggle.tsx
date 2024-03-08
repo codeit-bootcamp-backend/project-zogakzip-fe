@@ -16,10 +16,9 @@ const Toggle = ({ active, onClick }: ToggleProps) => {
       <div className={cx('valueText')}>{active ? '공개' : '비공개'}</div>
       {/* TODO: 아래 eslint 룰 위반 원인 및 해결 방법 */}
       {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-      <label htmlFor='toggle' className={cx('toggle', { active })}>
+      <label className={cx('toggle', { active })}>
         <input
           type='checkbox'
-          id='toggle'
           defaultChecked
           hidden
           onChange={() => onClick(!active)}

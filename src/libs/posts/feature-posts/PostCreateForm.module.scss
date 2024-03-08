@@ -1,0 +1,29 @@
+.container {
+  @include flexbox(normal, row, space-between, flex-start);
+  height: fit-content;
+  margin-bottom: 60px;
+}
+
+.divider {
+  align-self: stretch;
+  width: 1px;
+  background-color: $gray200;
+}
+
+.section {
+  @include flexbox(40px, column, flex-start, stretch);
+  width: 400px;
+}
+
+.submitButton {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.authFormContainer {
+  width: 400px;
+
+  .groupPassword {
+    margin-bottom: 60px;
+  }
+}

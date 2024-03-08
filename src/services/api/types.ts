@@ -76,6 +76,19 @@ export type PostDetail = {
   content: string
 } & Post
 
+export type PostFormInput = {
+  nickname: string,
+  title: string,
+  image?: File,
+  content: string,
+  tags: string[],
+  location: string
+  moment: string
+  isPublic: boolean
+  postPassword: string
+  groupPassword: string
+}
+
 // comments
 export type CommentType = {
   id: number,

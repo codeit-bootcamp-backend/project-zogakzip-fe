@@ -12,7 +12,13 @@ type FormModalProps = {
   onClose: () => void
 } & Omit<React.ComponentPropsWithoutRef<'dialog'>, 'content'>
 
-const FormModal = forwardRef<HTMLDialogElement, FormModalProps>(({ title, titleMarginBottom = '60px', onClose, content, ...restProps }, ref) => {
+const FormModal = forwardRef<HTMLDialogElement, FormModalProps>(({
+  title,
+  titleMarginBottom = '60px',
+  onClose,
+  content,
+  ...restProps
+}, ref) => {
   return (
     <dialog
       ref={ref}

@@ -4,12 +4,11 @@ import convertIdParamToNumber from '@libs/shared/util-util/convertIdParamToNumbe
 import GroupDetail from '@libs/groups/feature-groups/GroupDetail'
 import Divider from '@libs/shared/layout/Divider'
 import SectionLayout from '@libs/shared/layout/SectionLayout'
-import Button from '@libs/shared/button/Button'
 import Filters from '@libs/shared/filters/Filters'
 import { SORT_BY_POSTS_FILTERS } from '@libs/shared/dropdown/constants'
-import Link from 'next/link'
 import PostsList from '@libs/posts/feature-posts/PostsList'
 import PageLayout from '@libs/shared/layout/PageLayout'
+import PostCreateButton from '@libs/posts/feature-posts/PostCreateButton'
 
 type GroupDetailPageProps = {
   params: { groupId: string }
@@ -39,9 +38,7 @@ const GroupDetailPage = ({ params, searchParams }: GroupDetailPageProps) => {
       <SectionLayout
         title='추억 목록'
         headerButton={(
-          <Link href={`groups/${groupId}/posts/create`}>
-            <Button size='medium'>추억 올리기</Button>
-          </Link>
+          <PostCreateButton groupId={groupId} />
         )}
         content={(
           <>
