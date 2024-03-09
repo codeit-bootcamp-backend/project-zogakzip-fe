@@ -81,7 +81,7 @@ const GroupForm = ({ defaultValues, defaultImageUrl, onSubmit }: GroupFormProps)
             />
           </div>
         </div>
-        <Button size='large' type='submit'>만들기</Button>
+        <Button size='large' type='submit'>{defaultValues ? '수정하기' : '만들기'}</Button>
       </form>
     </FormProvider>
   )
