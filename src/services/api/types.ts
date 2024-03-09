@@ -106,3 +106,12 @@ export type CommentType = {
   content: string,
   createdAt: string
 }
+
+// comment - input
+export type CommentFormInput = {
+  nickname: string,
+  content: string,
+  password: string
+}
+
+export type CommentDeleteFormInput = Pick<CommentFormInput, 'password'>

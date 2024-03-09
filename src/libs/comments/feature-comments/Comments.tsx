@@ -1,7 +1,7 @@
 import getComments from '../data-access-comments/getComments'
 import CommentsLayout from '../ui-comments/CommentsLayout'
 import CommentsContent from './CommentsContent'
-import CreateCommentButton from './CreateCommentButton'
+import CommentCreateButton from './CommentCreateButton'
 
 type CommentsProps = {
   postId: number
@@ -12,7 +12,7 @@ const Comments = async ({ postId }: CommentsProps) => {
 
   return (
     <CommentsLayout
-      createCommentButton={(<CreateCommentButton postId={postId} />)}
+      createCommentButton={(<CommentCreateButton postId={postId} />)}
       contents={<CommentsContent comments={comments} />}
     />
   )
