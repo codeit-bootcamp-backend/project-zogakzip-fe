@@ -1,4 +1,4 @@
-import { META_POST_DETAIL } from '@app/_meta'
+import { META_GROUP_DETAIL } from '@app/_meta'
 import { SortByPosts } from '@services/api/types'
 import convertIdParamToNumber from '@libs/shared/util-util/convertIdParamToNumber'
 import GroupDetail from '@libs/groups/feature-groups/GroupDetail'
@@ -58,5 +58,5 @@ const GroupDetailPage = ({ params, searchParams }: GroupDetailPageProps) => {
   )
 }
 
-export const metadata = META_POST_DETAIL
+export const metadata = META_GROUP_DETAIL
 export default GroupDetailPage
