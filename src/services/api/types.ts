@@ -50,6 +50,8 @@ export type GroupDetail = {
   introduction: string
 }
 
+export type IsPublicGroup = Pick<Group, 'isPublic' | 'id'>
+
 // group - ipnput
 export type GroupFormInput = {
   name: string,
@@ -61,6 +63,8 @@ export type GroupFormInput = {
 }
 
 export type GroupDeleteFormInput = Pick<GroupFormInput, 'password'>
+
+export type GroupVerifyPasswordFormInput = Pick<GroupFormInput, 'password'>
 
 // post - data
 export type Post = {

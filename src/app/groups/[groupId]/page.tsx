@@ -9,6 +9,8 @@ import { SORT_BY_POSTS_FILTERS } from '@libs/shared/dropdown/constants'
 import PostsList from '@libs/posts/feature-posts/PostsList'
 import PageLayout from '@libs/shared/layout/PageLayout'
 import PostCreateButton from '@libs/posts/feature-posts/PostCreateButton'
+import getIsPublicGroup from '@libs/groups/data-access-groups/getIsPublicGroup'
+import GroupVerifyPassword from '@libs/groups/feature-groups/GroupVerifyPassword'
 
 type GroupDetailPageProps = {
   params: { groupId: string }
@@ -19,7 +21,7 @@ type GroupDetailPageProps = {
   }>
 }
 
-const GroupDetailPage = ({ params, searchParams }: GroupDetailPageProps) => {
+const GroupDetailPage = async ({ params, searchParams }: GroupDetailPageProps) => {
   const {
     sortBy: sortByParam,
     isPublic: isPublicParam,
@@ -31,6 +33,16 @@ const GroupDetailPage = ({ params, searchParams }: GroupDetailPageProps) => {
   const { groupId: groupIdParams } = params
   const groupId = convertIdParamToNumber(groupIdParams)
 
+  const isPublicGroup = await getIsPublicGroup(groupId)
+  // 참고: 비공개 그룹
+  if (!isPublicGroup.isPublic) return (
+    <GroupVerifyPassword
+      groupId={groupId}
+      sortBy={sortBy}
+      searchParams={{ sortBy, isPublic, keyword }}
+    />
+  )
+  // 참고: 공개 그룹
   return (
     <PageLayout paddingBlock='40px 120px'>
       <GroupDetail groupId={groupId} />

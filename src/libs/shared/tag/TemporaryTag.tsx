@@ -18,6 +18,7 @@ const TemporaryTag = ({ tag, onRemove }: TemporaryTagProps) => {
         {`#${tag}`}
       </span>
       <button
+        type='button'
         onClick={(e) => { e.preventDefault(); onRemove(tag) }}
         className={cx('iconWrapper')}
         tabIndex={-1}

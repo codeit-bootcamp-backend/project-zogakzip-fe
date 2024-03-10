@@ -7,7 +7,7 @@
   border-radius: 6px;
   background-color: $gray50;
 
-  &::backdrop {
+  &:not(.hasBackdrop)::backdrop {
     background-color: transparent;
   }
 

@@ -1,3 +1,5 @@
+'use client'
+
 import classNames from 'classnames/bind'
 import styles from './ConfirmModal.module.scss'
 import { forwardRef } from 'react'
@@ -9,12 +11,19 @@ type ConfirmModalProps = {
   title: string
   description: string
   onClose: () => void
+  hasBackdrop?: boolean
 } & React.ComponentPropsWithoutRef<'dialog'>
 
-const ConfirmModal = forwardRef<HTMLDialogElement, ConfirmModalProps>(({ title, description, onClose, ...restProps }, ref) => {
+const ConfirmModal = forwardRef<HTMLDialogElement, ConfirmModalProps>(({
+  title,
+  description,
+  onClose,
+  hasBackdrop = true,
+  ...restProps
+}, ref) => {
   return (
     <dialog
-      className={cx('dialog')}
+      className={cx('dialog', { hasBackdrop })}
       ref={ref}
       onKeyDown={(e) => { if (e.key === 'Escape') onClose() }}
       {...restProps}

@@ -1,4 +1,4 @@
-import { Group, GroupDetail } from '@services/api/types'
+import { Group, GroupDetail, IsPublicGroup } from '@services/api/types'
 
 export const MOCK_GROUPS: Group[] = [
   {
@@ -189,4 +189,9 @@ export const MOCK_GROUP_DETAIL: GroupDetail = {
   postCount: 1,
   createdAt: '2024-03-02T07:47:49.803Z',
   introduction: '우리는 달봉이네 네 식구들이에요! 달봉이네 가족의 추억을 공유하고, 함께 기억을 만들어요!',
+}
+
+export const MOCK_IS_PUBLIC_GROUP: IsPublicGroup = {
+  id: 1,
+  isPublic: false,
 }

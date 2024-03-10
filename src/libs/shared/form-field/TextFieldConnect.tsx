@@ -31,7 +31,6 @@ const TextFieldConnect = <
         <TextField
           {...field}
           {...inputProps}
-          onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => { e.key === 'Enter' && e.preventDefault() }}
           error={Boolean(fieldState.error)}
           helperText={fieldState.error?.message}
         />
