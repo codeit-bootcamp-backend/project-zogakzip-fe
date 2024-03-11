@@ -46,8 +46,8 @@ const GroupOptionButtons = ({ groupId, groupDetail }: GroupOptionButtonsProps) =
               name: groupDetail.name,
               introduction: groupDetail.introduction,
               isPublic: groupDetail.isPublic,
+              imageUrl: groupDetail.imageUrl,
             }}
-            defaultImageUrl={groupDetail.imageUrl ?? undefined}
             onSubmit={handleEditGroup}
           />
         )}

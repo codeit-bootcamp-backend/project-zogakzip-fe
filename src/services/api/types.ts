@@ -56,8 +56,7 @@ export type IsPublicGroup = Pick<Group, 'isPublic' | 'id'>
 export type GroupFormInput = {
   name: string,
   introduction: string,
-  // 참고: PUT에 patch를 사용하고, image는 dirty 상태일 때만 전송될 예정
-  image?: File,
+  imageUrl: string | null,
   isPublic: boolean
   password: string
 }
@@ -91,7 +90,7 @@ export type IsPublicPost = Pick<Post, 'isPublic' | 'id'>
 export type PostCreateFormInput = {
   nickname: string,
   title: string,
-  image?: File,
+  imageUrl: string | null,
   content: string,
   tags: string[],
   location: string,

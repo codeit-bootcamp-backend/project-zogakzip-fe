@@ -1,9 +1,12 @@
+'use client'
+
 import classNames from 'classnames/bind'
 import styles from './ImageUploadConnect.module.scss'
 import { Controller, ControllerProps, FieldPath, FieldValues, useFormContext } from 'react-hook-form'
 import { useRef } from 'react'
-import Button from '../button/Button'
-import TextField from '../input/TextField/TextField'
+import Button from '../../button/Button'
+import TextField from '../../input/TextField/TextField'
+import uploadImage from './uploadImage'
 
 const cx = classNames.bind(styles)
 
@@ -13,7 +16,6 @@ type ImageUploadConnectProps<
 > = {
   name: N
   rules?: ControllerProps<F, N>['rules']
-  defaultImageUrl?: string
 }
 
 const ImageUploadConnect = <
@@ -22,15 +24,16 @@ const ImageUploadConnect = <
 >({
   name,
   rules,
-  defaultImageUrl,
 }: ImageUploadConnectProps<F, N>) => {
   const { setValue } = useFormContext()
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const handleUploadImage = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleUploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
-    setValue('image', file)
+    const imageUrl = await uploadImage(file)
+    // TODO: 타입 문제 해결. 단언으로 임시 해결 중
+    if (imageUrl) setValue(name as string, imageUrl)
   }
 
   return (
@@ -42,8 +45,8 @@ const ImageUploadConnect = <
           <>
             <TextField
               disabled
-              placeholder={defaultImageUrl ?? '파일을 선택해 주세요'}
-              value={value?.name || ''}
+              placeholder={value ?? '파일을 선택해 주세요'}
+              value={value || ''}
             />
             <label>
               <input

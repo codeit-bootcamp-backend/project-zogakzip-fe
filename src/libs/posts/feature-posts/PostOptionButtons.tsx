@@ -51,8 +51,8 @@ const PostOptionButtons = ({ postId, postDetail }: PostOptionButtonsProps) => {
               location: postDetail.location!,
               moment: postDetail.moment!,
               isPublic: postDetail.isPublic,
+              imageUrl: postDetail.imageUrl,
             }}
-            defaultImageUrl={postDetail.imageUrl ?? undefined}
             onSubmit={handleEditPost}
           />
         )}

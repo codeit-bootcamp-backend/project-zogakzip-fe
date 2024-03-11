@@ -6,7 +6,7 @@ import { PostEditFormInput } from '@services/api/types'
 import { FormProvider, useForm } from 'react-hook-form'
 import FieldLabel from '@libs/shared/input/FieldLabel/FieldLabel'
 import TextFieldConnect from '@libs/shared/form-field/TextFieldConnect'
-import ImageUploadConnect from '@libs/shared/form-field/ImageUploadConnect'
+import ImageUploadConnect from '@libs/shared/form-field/ImageUploadConnect/ImageUploadConnect'
 import TextAreaConnect from '@libs/shared/form-field/TextAreaConnect'
 import TagsFieldConnect from '@libs/shared/form-field/TagsFieldConnect'
 import DatePickerConnect from '@libs/shared/form-field/DatePickerConnect'
@@ -17,13 +17,11 @@ const cx = classNames.bind(styles)
 
 type PostEditFormProps = {
   defaultValues: Omit<PostEditFormInput, 'postPassword'>
-  defaultImageUrl?: string
   onSubmit: (data: PostEditFormInput) => void
 }
 
 const PostEditForm = ({
   defaultValues,
-  defaultImageUrl,
   onSubmit,
 }: PostEditFormProps) => {
   const methods = useForm<PostEditFormInput>({ defaultValues, mode: 'onChange' })
@@ -60,7 +58,6 @@ const PostEditForm = ({
               <FieldLabel label='이미지' />
               <ImageUploadConnect
                 name='image'
-                defaultImageUrl={defaultImageUrl}
               />
             </div>
             <div className={cx('content')}>
