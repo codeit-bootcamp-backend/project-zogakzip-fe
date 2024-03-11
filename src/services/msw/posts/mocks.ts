@@ -1,4 +1,4 @@
-import { Post, PostDetail } from '@services/api/types'
+import { IsPublicPost, Post, PostDetail } from '@services/api/types'
 
 export const MOCK_POSTS: Post[] = [
   {
@@ -162,4 +162,9 @@ export const MOCK_POST_DETAIL: PostDetail = {
   commentCount: 1,
   createdAt: '2024-01-22T07:47:49.803Z',
   content: '달봉이네 가족의 기억을 공유합니다!',
+}
+
+export const MOCK_IS_PUBLIC_POST: IsPublicPost = {
+  id: 1,
+  isPublic: false,
 }

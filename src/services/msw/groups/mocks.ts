@@ -193,5 +193,5 @@ export const MOCK_GROUP_DETAIL: GroupDetail = {
 
 export const MOCK_IS_PUBLIC_GROUP: IsPublicGroup = {
   id: 1,
-  isPublic: false,
+  isPublic: true,
 }

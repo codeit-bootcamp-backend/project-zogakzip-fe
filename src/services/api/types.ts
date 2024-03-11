@@ -85,6 +85,8 @@ export type PostDetail = {
   content: string
 } & Post
 
+export type IsPublicPost = Pick<Post, 'isPublic' | 'id'>
+
 // post - input
 export type PostCreateFormInput = {
   nickname: string,
@@ -102,6 +104,10 @@ export type PostCreateFormInput = {
 export type PostEditFormInput = Omit<PostCreateFormInput, 'groupPassword'>
 
 export type PostDeleteFormInput = Pick<PostCreateFormInput, 'postPassword'>
+
+export type PostVerifyPasswordFormInput = {
+  password: string
+}
 
 // comment - data
 export type CommentType = {

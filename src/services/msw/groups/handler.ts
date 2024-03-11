@@ -19,7 +19,6 @@ const groupsHandler = [
   http.post(addBasePrefix('/groups/:groupId/verify-password'), async ({ request }) => {
     await delay()
     const body = await request.json() as { password: string }
-    console.log(body.password)
     if (body.password !== 'asdf1234') {
       return HttpResponse.json({ message: '비밀번호가 일치하지 않습니다.' }, { status: 401 })
     }
