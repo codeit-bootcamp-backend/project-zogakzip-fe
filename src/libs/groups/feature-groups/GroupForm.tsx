@@ -60,7 +60,7 @@ const GroupForm = ({ defaultValues, onSubmit }: GroupFormProps) => {
             />
             <ToggleConnect
               name='isPublic'
-              defaultValue={defaultValues?.isPublic ?? false}
+              defaultValue={defaultValues?.isPublic ?? true}
             />
           </div>
           <div className={cx('password')}>

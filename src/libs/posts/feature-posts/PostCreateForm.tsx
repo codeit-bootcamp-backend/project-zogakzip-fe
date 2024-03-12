@@ -118,7 +118,7 @@ const PostCreateForm = ({
               />
               <ToggleConnect
                 name='isPublic'
-                defaultValue={false}
+                defaultValue={true}
               />
             </div>
             <div className={cx('postPassword')}>
