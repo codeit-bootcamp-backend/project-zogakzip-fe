@@ -34,5 +34,6 @@ const GroupsPage = ({ searchParams }: GroupsPageProps) => {
   )
 }
 
+export const revalidate = 60
 export const metadata = META_GROUPS
 export default GroupsPage

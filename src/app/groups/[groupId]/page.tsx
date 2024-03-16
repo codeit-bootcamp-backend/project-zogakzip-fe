@@ -70,5 +70,6 @@ const GroupDetailPage = async ({ params, searchParams }: GroupDetailPageProps) =
   )
 }
 
+export const revalidate = 60
 export const metadata = META_GROUP_DETAIL
 export default GroupDetailPage
