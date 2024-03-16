@@ -30,7 +30,9 @@ const ConfirmModal = forwardRef<HTMLDialogElement, ConfirmModalProps>(({
     >
       <div className={cx('title')}>{title}</div>
       <div className={cx('description')}>{description}</div>
-      <Button type='button' size='large' onClick={() => onClose()}>확인</Button>
+      <div className={cx('buttonWrapper')}>
+        <Button type='button' size='large' onClick={() => onClose()}>확인</Button>
+      </div>
     </dialog>
   )
 })
