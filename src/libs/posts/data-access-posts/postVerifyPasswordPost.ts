@@ -3,8 +3,8 @@ import { PostVerifyPasswordFormInput } from '@services/api/types'
 
 type PostVerifyPasswordResponse = { message: string }
 
-const postVerifyPasswordPost = async (postId: number, postData: PostVerifyPasswordFormInput) => {
-  const response = await postRequest<PostVerifyPasswordResponse, PostVerifyPasswordFormInput>(`/posts/${postId}/verify-password`, postData)
+const postVerifyPasswordPost = async (postId: number, body: PostVerifyPasswordFormInput) => {
+  const response = await postRequest<PostVerifyPasswordResponse, PostVerifyPasswordFormInput>(`/posts/${postId}/verify-password`, body)
   return response
 }
 
