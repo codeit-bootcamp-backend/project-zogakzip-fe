@@ -10,7 +10,7 @@ type ProvidersProps = {
 const Providers = ({ children }: ProvidersProps) => {
   // Provider: MSW
 
-  if (process.env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV === 'development' && process.env.NEXT_PUBLIC_MOCK_ENABLED === 'true') {
     initMocks()
   }
 
