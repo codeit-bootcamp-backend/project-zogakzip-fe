@@ -9,9 +9,11 @@ const cx = classNames.bind(styles)
 
 type CommentsContentProps = {
   comments: CommentType[]
+  currentPage: number
+  totalPages: number
 }
 
-const CommentsContent = ({ comments }: CommentsContentProps) => {
+const CommentsContent = ({ comments, currentPage, totalPages }: CommentsContentProps) => {
   return (
     <>
       <h3 className={cx('label')}>댓글 {comments.length}</h3>
@@ -25,7 +27,7 @@ const CommentsContent = ({ comments }: CommentsContentProps) => {
               ))}
             </div>
             <div className={cx('paginationWrapper')}>
-              <Pagination currentPage={1} totalPages={10} scroll={false} />
+              <Pagination currentPage={currentPage} totalPages={totalPages} scroll={false} />
             </div>
           </>
         )

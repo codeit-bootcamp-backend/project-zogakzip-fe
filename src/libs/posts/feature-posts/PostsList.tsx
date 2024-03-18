@@ -8,7 +8,7 @@ type PostsListProps = {
 }
 
 const PostsList = async ({ groupId, searchParams }: PostsListProps) => {
-  const posts = await getPosts(groupId, searchParams)
+  const { data: posts } = await getPosts(groupId, searchParams)
   return (
     <UiPostsList posts={posts} groupId={groupId} />
   )

@@ -7,7 +7,7 @@ type GroupsListProps = {
 }
 
 const GroupsList = async ({ searchParams }: GroupsListProps) => {
-  const groups = await getGroups(searchParams)
+  const { data: groups } = await getGroups(searchParams)
   return (
     <UiGroupsList groups={groups} />
   )

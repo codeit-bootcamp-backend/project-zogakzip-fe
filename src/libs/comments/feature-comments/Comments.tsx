@@ -8,12 +8,12 @@ type CommentsProps = {
 }
 
 const Comments = async ({ postId }: CommentsProps) => {
-  const comments = await getComments(postId)
+  const { data: comments, currentPage, totalPages } = await getComments(postId)
 
   return (
     <CommentsLayout
       createCommentButton={(<CommentCreateButton postId={postId} />)}
-      contents={<CommentsContent comments={comments} />}
+      contents={<CommentsContent comments={comments} currentPage={currentPage} totalPages={totalPages} />}
     />
   )
 }

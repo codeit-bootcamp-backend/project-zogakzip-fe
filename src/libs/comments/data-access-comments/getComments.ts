@@ -1,8 +1,8 @@
 import { getRequest } from '@services/api/requests'
-import { CommentType } from '@services/api/types'
+import { CommentType, PaginationResponse } from '@services/api/types'
 
 const getComments = async (postId: number) => {
-  const response = await getRequest<CommentType[]>(`/posts/${postId}/comments`)
+  const response = await getRequest<PaginationResponse<CommentType>>(`/posts/${postId}/comments`)
   return response
 }
 

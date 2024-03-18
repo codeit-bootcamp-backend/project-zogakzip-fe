@@ -1,3 +1,11 @@
+// 공통
+export type PaginationResponse<T> = {
+  currentPage: number,
+  totalPages: number,
+  totalItemCount: number
+  data: T[],
+}
+
 // enum
 export enum SortByGroups {
   mostPosted = 'mostPosted',
