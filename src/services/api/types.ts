@@ -25,6 +25,7 @@ export type GroupsSearchParams = {
   sortBy: SortByGroups,
   keyword: string,
   isPublic: boolean
+  page?: number
 }
 
 export type PostsSearchParams = {

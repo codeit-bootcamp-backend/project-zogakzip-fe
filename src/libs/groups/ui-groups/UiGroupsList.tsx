@@ -10,9 +10,10 @@ const cx = classNames.bind(styles)
 
 type UiGroupsListProps = {
   groups: Group[]
+  moreButton: React.ReactNode
 }
 
-const UiGroupsList = ({ groups }: UiGroupsListProps) => {
+const UiGroupsList = ({ groups, moreButton }: UiGroupsListProps) => {
   if (groups.length === 0) return (
     <div className={cx('emptyContainer')}>
       <EmptyData title='등록된 그룹이 없습니다.' content='가장 먼저 그룹을 만들어보세요!' />
@@ -29,7 +30,7 @@ const UiGroupsList = ({ groups }: UiGroupsListProps) => {
           <GroupCard key={group.id} card={group} />
         ))}
       </div>
-      <Button size='extraLarge' color='bright'>더보기</Button>
+      {moreButton}
     </>
   )
 }

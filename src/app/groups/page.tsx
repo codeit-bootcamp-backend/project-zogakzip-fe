@@ -4,6 +4,7 @@ import Filters from '@libs/shared/filters/Filters'
 import { SORT_BY_GROUPS_FILTERS } from '@libs/shared/dropdown/constants'
 import GroupsList from '../../libs/groups/feature-groups/GroupsList'
 import PageLayout from '@libs/shared/layout/PageLayout'
+import getGroups from '@libs/groups/data-access-groups/getGroups'
 
 type GroupsPageProps = {
   searchParams: Partial<{
@@ -13,7 +14,7 @@ type GroupsPageProps = {
   }>
 }
 
-const GroupsPage = ({ searchParams }: GroupsPageProps) => {
+const GroupsPage = async ({ searchParams }: GroupsPageProps) => {
   const {
     sortBy: sortByParam,
     isPublic: isPublicParam,
@@ -22,6 +23,8 @@ const GroupsPage = ({ searchParams }: GroupsPageProps) => {
   const sortBy = SortByGroups[sortByParam as keyof typeof SortByGroups] || SortByGroups.mostLiked
   const isPublic = !(isPublicParam === 'false')
 
+  const { data, currentPage, totalPages } = await getGroups({ sortBy, keyword, isPublic })
+
   return (
     <PageLayout paddingBlock='40px 120px'>
       <Filters
@@ -29,11 +32,16 @@ const GroupsPage = ({ searchParams }: GroupsPageProps) => {
         filters={SORT_BY_GROUPS_FILTERS}
         currentData={sortBy}
       />
-      <GroupsList searchParams={{ sortBy, keyword, isPublic }} />
+      <GroupsList
+        searchParams={{ sortBy, keyword, isPublic }}
+        initialGroups={data}
+        initialPage={currentPage}
+        initialHasNext={currentPage < totalPages}
+      />
     </PageLayout>
   )
 }
 
-export const revalidate = 60
+export const revalidate = 0
 export const metadata = META_GROUPS
 export default GroupsPage
