@@ -29,7 +29,7 @@ const PostCreateForm = ({
 }: PostCreateFormProps) => {
   // 참고: trigger 이후에 onChange 시 error 확인이 안돼서 넣었음. 렌더링 성능 확인 필요
   const methods = useForm<PostCreateFormInput>({ defaultValues: { tags: [] }, mode: 'onChange' })
-  const { handleSubmit, trigger } = methods
+  const { handleSubmit, trigger, reset } = methods
 
   const handleClickCompletedButton = async () => {
     const isValid = await trigger()
@@ -40,7 +40,7 @@ const PostCreateForm = ({
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={async (e) => { await handleSubmit(onSubmit)(e); reset() }}>
         <div className={cx('container')}>
           <div className={cx('section')}>
             <div className={cx('nickname')}>
@@ -141,6 +141,7 @@ const PostCreateForm = ({
         <div className={cx('submitButton')}>
           <Button
             size='large'
+            type='button'
             onClick={(e) => {
               e.preventDefault()
               handleClickCompletedButton()

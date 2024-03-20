@@ -2,7 +2,7 @@
 
 import { Post, PostsSearchParams } from '@services/api/types'
 import UiPostsList from '../ui-posts/UiPostsList'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Button from '@libs/shared/button/Button'
 import getPosts from '../data-access-posts/getPosts'
 import PostCreateButton from './PostCreateButton'
@@ -26,6 +26,10 @@ const PostsList = ({ groupId, initialPosts, initialHasNext, initialPage, searchP
     setPage(currentPage)
     setHasNext(currentPage < totalPages)
   }
+
+  useEffect(() => {
+    setPosts(initialPosts)
+  }, [initialPosts])
 
   return (
     <UiPostsList

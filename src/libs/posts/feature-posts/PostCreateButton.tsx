@@ -4,6 +4,8 @@ import Button from '@libs/shared/button/Button'
 import useModal from '@libs/shared/modal/useModal'
 import PostCreateModal from './PostCreateModal'
 import { PostCreateFormInput } from '@services/api/types'
+import postPost from '../data-access-posts/postPost'
+import useConfirmModal from '@libs/shared/modal/useConfirmModal'
 
 type PostCreateButtonProps = {
   groupId: number
@@ -13,12 +15,23 @@ type PostCreateButtonProps = {
 const PostCreateButton = ({ groupId, size = 'medium' }: PostCreateButtonProps) => {
   const postCreateFormModal = useModal()
   const authCheckFormModal = useModal()
+  const { renderConfirmModal, openConfirmModal } = useConfirmModal()
 
-  const handleCreatePost = (data: PostCreateFormInput) => {
-    console.log(`group ${groupId}번 create post`)
-    console.log(data)
-    postCreateFormModal.closeModal()
-    authCheckFormModal.closeModal()
+  const handleCreatePost = async (data: PostCreateFormInput) => {
+    try {
+      await postPost(groupId, data)
+      postCreateFormModal.closeModal()
+      authCheckFormModal.closeModal()
+      openConfirmModal({
+        title: '추억 올리기 성공',
+        description: '추억이 성공적으로 등록되었습니다.',
+      })
+    } catch (error) {
+      openConfirmModal({
+        title: '추억 올리기 실패',
+        description: (error instanceof Error) ? error.message : '알 수 없는 오류가 발생했습니다.',
+      })
+    }
   }
 
   return (
@@ -29,6 +42,7 @@ const PostCreateButton = ({ groupId, size = 'medium' }: PostCreateButtonProps) =
         authCheckFormModal={authCheckFormModal}
         onSubmit={handleCreatePost}
       />
+      {renderConfirmModal()}
     </>
   )
 }
