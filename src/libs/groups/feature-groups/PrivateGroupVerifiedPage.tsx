@@ -30,43 +30,41 @@ const PrivateGroupVerifiedPage = ({ groupId, searchParams }: PrivateGroupVerifie
   if (!groupDetail) return <div>group Detail not found</div>
 
   return (
-    <div>
-      <PageLayout paddingBlock='40px 120px'>
-        <GroupDetailLayout
-          groupDetail={groupDetail}
-          optionButtons={<GroupOptionButtons groupId={groupId} groupDetail={groupDetail} />}
-          likeButton={<LikeButton type='group' id={groupId} />}
-          // badgeCarousel={<BadgeCarousel badges={groupDetail.badges} />}
-          badgeCarousel={<BadgeCarousel badges={[]} />}
-        />
-        <Divider marginTop='120px' marginBottom='120px' color='gray' />
-        <SectionLayout
-          title='추억 목록'
-          headerButton={(
-            <PostCreateButton groupId={groupId} />
-          )}
-          content={(
-            <>
-              <Filters
-                placeholder='태그 혹은 제목을 입력해 주세요'
-                filters={SORT_BY_POSTS_FILTERS}
-                currentData={searchParams.sortBy}
+    <PageLayout paddingBlock='40px 120px'>
+      <GroupDetailLayout
+        groupDetail={groupDetail}
+        optionButtons={<GroupOptionButtons groupId={groupId} groupDetail={groupDetail} />}
+        likeButton={<LikeButton type='group' id={groupId} />}
+        // badgeCarousel={<BadgeCarousel badges={groupDetail.badges} />}
+        badgeCarousel={<BadgeCarousel badges={[]} />}
+      />
+      <Divider marginTop='120px' marginBottom='120px' color='gray' />
+      <SectionLayout
+        title='추억 목록'
+        headerButton={(
+          <PostCreateButton groupId={groupId} />
+        )}
+        content={(
+          <>
+            <Filters
+              placeholder='태그 혹은 제목을 입력해 주세요'
+              filters={SORT_BY_POSTS_FILTERS}
+              currentData={searchParams.sortBy}
+            />
+            {postsPagination && (
+              // TODO: 가능하다면 keepPreviousData
+              <PostsList
+                searchParams={searchParams}
+                initialPosts={postsPagination.data}
+                initialPage={postsPagination.currentPage}
+                initialHasNext={postsPagination.currentPage < postsPagination.totalPages}
+                groupId={groupId}
               />
-              {postsPagination && (
-                // TODO: 가능하다면 keepPreviousData
-                <PostsList
-                  searchParams={searchParams}
-                  initialPosts={postsPagination.data}
-                  initialPage={postsPagination.currentPage}
-                  initialHasNext={postsPagination.currentPage < postsPagination.totalPages}
-                  groupId={groupId}
-                />
-              )}
-            </>
-          )}
-        />
-      </PageLayout>
-    </div>
+            )}
+          </>
+        )}
+      />
+    </PageLayout>
   )
 }
 

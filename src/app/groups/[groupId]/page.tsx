@@ -1,7 +1,6 @@
 import { META_GROUP_DETAIL } from '@app/_meta'
 import { SortByPosts } from '@services/api/types'
 import convertIdParamToNumber from '@libs/shared/util-util/convertIdParamToNumber'
-import GroupDetail from '@libs/groups/feature-groups/GroupDetail'
 import Divider from '@libs/shared/layout/Divider'
 import SectionLayout from '@libs/shared/layout/SectionLayout'
 import Filters from '@libs/shared/filters/Filters'
@@ -12,6 +11,11 @@ import PostCreateButton from '@libs/posts/feature-posts/PostCreateButton'
 import getIsPublicGroup from '@libs/groups/data-access-groups/getIsPublicGroup'
 import PrivateGroupVerification from '@libs/groups/feature-groups/PrivateGroupVerification'
 import getPosts from '@libs/posts/data-access-posts/getPosts'
+import getGroupDetail from '@libs/groups/data-access-groups/getGroupDetail'
+import GroupDetailLayout from '@libs/groups/ui-groups/GroupDetailLayout'
+import GroupOptionButtons from '@libs/groups/feature-groups/GroupOptionButtons'
+import LikeButton from '@libs/shared/button/LikeButton'
+import BadgeCarousel from '@libs/groups/ui-groups/BadgeCarousel'
 
 type GroupDetailPageProps = {
   params: { groupId: string }
@@ -43,11 +47,21 @@ const GroupDetailPage = async ({ params, searchParams }: GroupDetailPageProps) =
     />
   )
 
-  const { data, currentPage, totalPages } = await getPosts(groupId, { sortBy, isPublic, keyword })
+  const [postspagination, groupDetail] = await Promise.all([
+    getPosts(groupId, { sortBy, isPublic, keyword }),
+    getGroupDetail(groupId),
+  ])
+  const { data, currentPage, totalPages } = postspagination
   // 참고: 공개 그룹
   return (
     <PageLayout paddingBlock='40px 120px'>
-      <GroupDetail groupId={groupId} />
+      <GroupDetailLayout
+        groupDetail={groupDetail}
+        optionButtons={<GroupOptionButtons groupId={groupId} groupDetail={groupDetail} />}
+        likeButton={<LikeButton type='group' id={groupId} />}
+        // badgeCarousel={<BadgeCarousel badges={groupDetail.badges} />}
+        badgeCarousel={<BadgeCarousel badges={[]} />}
+      />
       <Divider marginTop='120px' marginBottom='120px' color='gray' />
       <SectionLayout
         title='추억 목록'
