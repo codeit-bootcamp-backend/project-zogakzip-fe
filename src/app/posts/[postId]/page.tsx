@@ -1,37 +1,60 @@
 import { META_POST_DETAIL } from '@app/_meta'
 import convertIdParamToNumber from '@libs/shared/util-util/convertIdParamToNumber'
-import PostDetail from '@libs/posts/feature-posts/PostDetail'
-import Comments from '@libs/comments/feature-comments/Comments'
 import PageLayout from '@libs/shared/layout/PageLayout'
 import getIsPublicPost from '@libs/posts/data-access-posts/getIsPublicPost'
-import PostVerifyPassword from '@libs/posts/feature-posts/PostVerifyPassword'
+import PrivatePostVerification from '@libs/posts/feature-posts/PrivatePostVerification'
+import convertPageParamToNumber from '@libs/shared/util-util/convertPageParamToNumber'
+import getPostDetail from '@libs/posts/data-access-posts/getPostDetail'
+import getComments from '@libs/comments/data-access-comments/getComments'
+import PostDetailLayout from '@libs/posts/ui-posts/PostDetailLayout'
+import PostOptionButtons from '@libs/posts/feature-posts/PostOptionButtons'
+import LikeButton from '@libs/shared/button/LikeButton'
+import CommentsLayout from '@libs/comments/ui-comments/CommentsLayout'
+import CommentCreateButton from '@libs/comments/feature-comments/CommentCreateButton'
+import CommentsList from '@libs/comments/feature-comments/CommentsList'
 
 type PostDetailPageProps = {
   params: { postId: string }
+  searchParams: Partial<{
+    page: string
+  }>
 }
 
-const PostDetailPage = async ({ params }: PostDetailPageProps) => {
-
+const PostDetailPage = async ({ params, searchParams }: PostDetailPageProps) => {
   const { postId: postIdParams } = params
   const postId = convertIdParamToNumber(postIdParams)
+  const { page: pageParams } = searchParams
+  const page = convertPageParamToNumber(pageParams)
 
   const isPublicPost = await getIsPublicPost(postId)
-
-  if (!isPublicPost.isPublic) {
-    return (
-      <PostVerifyPassword
-        postId={postId}
-      />
-    )
-  }
-
+  // 참고: 비공개 추억
+  if (!isPublicPost.isPublic) return (
+    <PrivatePostVerification
+      postId={postId}
+      page={page}
+    />
+  )
+  const [postDetail, commentsPagination] = await Promise.all([
+    getPostDetail(postId),
+    getComments(postId, page),
+  ])
+  const { data, currentPage, totalPages } = commentsPagination
+  // 참고: 공개 추억
   return (
     <PageLayout paddingBlock='40px 120px'>
-      <PostDetail postId={postId} />
-      <Comments postId={postId} />
+      <PostDetailLayout
+        postDetail={postDetail}
+        optionButtons={<PostOptionButtons postId={postId} postDetail={postDetail} />}
+        likeButton={<LikeButton type='post' id={postId} />}
+      />
+      <CommentsLayout
+        createCommentButton={(<CommentCreateButton postId={postId} />)}
+        contents={<CommentsList comments={data} currentPage={currentPage} totalPages={totalPages} />}
+      />
     </PageLayout>
   )
 }
 
+export const revalidate = 0
 export const metadata = META_POST_DETAIL
 export default PostDetailPage

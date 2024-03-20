@@ -114,7 +114,7 @@ export type PostEditFormInput = Omit<PostCreateFormInput, 'groupPassword'>
 
 export type PostDeleteFormInput = Pick<PostCreateFormInput, 'postPassword'>
 
-export type PostVerifyPasswordFormInput = {
+export type PostVerificationFormInput = {
   password: string
 }
 

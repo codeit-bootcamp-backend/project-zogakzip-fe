@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind'
-import styles from './CommentsContent.module.scss'
+import styles from './CommentsList.module.scss'
 import { CommentType } from '@services/api/types'
 import Comment from './Comment'
 import Pagination from '@libs/shared/pagination/Pagination'
@@ -7,13 +7,13 @@ import Divider from '@libs/shared/layout/Divider'
 
 const cx = classNames.bind(styles)
 
-type CommentsContentProps = {
+type CommentsListProps = {
   comments: CommentType[]
   currentPage: number
   totalPages: number
 }
 
-const CommentsContent = ({ comments, currentPage, totalPages }: CommentsContentProps) => {
+const CommentsList = ({ comments, currentPage, totalPages }: CommentsListProps) => {
   return (
     <>
       <h3 className={cx('label')}>댓글 {comments.length}</h3>
@@ -41,4 +41,4 @@ const CommentsContent = ({ comments, currentPage, totalPages }: CommentsContentP
   )
 }
 
-export default CommentsContent
+export default CommentsList
