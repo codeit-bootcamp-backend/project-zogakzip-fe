@@ -42,11 +42,11 @@ export const getRequest = async <T>(url: string, config?: RequestInit): Promise<
   return response.json() as Promise<T>
 }
 
-export const postRequest = async <T, B>(url: string, body: B, config?: RequestInit): Promise<T> => {
+export const postRequest = async <T, B>(url: string, body?: B, config?: RequestInit): Promise<T> => {
   requestInterceptor(url, 'POST')
   const response = await fetch(addBaseUrlPrefix(url), {
     method: 'POST',
-    body: JSON.stringify(body),
+    body: body instanceof FormData ? body : JSON.stringify(body),
     headers: {
       'Content-Type': 'application/json',
     },
