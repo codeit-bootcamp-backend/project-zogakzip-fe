@@ -7,9 +7,10 @@ import { PostCreateFormInput } from '@services/api/types'
 
 type PostCreateButtonProps = {
   groupId: number
+  size?: 'medium' | 'large'
 }
 
-const PostCreateButton = ({ groupId }: PostCreateButtonProps) => {
+const PostCreateButton = ({ groupId, size = 'medium' }: PostCreateButtonProps) => {
   const postCreateFormModal = useModal()
   const authCheckFormModal = useModal()
 
@@ -22,7 +23,7 @@ const PostCreateButton = ({ groupId }: PostCreateButtonProps) => {
 
   return (
     <>
-      <Button size="medium" onClick={() => postCreateFormModal.openModal()}>추억 올리기</Button>
+      <Button size={size} onClick={() => postCreateFormModal.openModal()}>추억 올리기</Button>
       <PostCreateModal
         postCreateFormModal={postCreateFormModal}
         authCheckFormModal={authCheckFormModal}

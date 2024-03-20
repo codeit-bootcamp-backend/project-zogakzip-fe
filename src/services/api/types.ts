@@ -32,6 +32,7 @@ export type PostsSearchParams = {
   sortBy: SortByPosts,
   keyword: string,
   isPublic: boolean
+  page?: number
 }
 
 // group - data
@@ -72,7 +73,7 @@ export type GroupFormInput = {
 
 export type GroupDeleteFormInput = Pick<GroupFormInput, 'password'>
 
-export type GroupVerifyPasswordFormInput = Pick<GroupFormInput, 'password'>
+export type GroupVerificationFormInput = Pick<GroupFormInput, 'password'>
 
 // post - data
 export type Post = {

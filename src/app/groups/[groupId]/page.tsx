@@ -10,7 +10,8 @@ import PostsList from '@libs/posts/feature-posts/PostsList'
 import PageLayout from '@libs/shared/layout/PageLayout'
 import PostCreateButton from '@libs/posts/feature-posts/PostCreateButton'
 import getIsPublicGroup from '@libs/groups/data-access-groups/getIsPublicGroup'
-import GroupVerifyPassword from '@libs/groups/feature-groups/GroupVerifyPassword'
+import PrivateGroupVerification from '@libs/groups/feature-groups/PrivateGroupVerification'
+import getPosts from '@libs/posts/data-access-posts/getPosts'
 
 type GroupDetailPageProps = {
   params: { groupId: string }
@@ -36,12 +37,13 @@ const GroupDetailPage = async ({ params, searchParams }: GroupDetailPageProps) =
   const isPublicGroup = await getIsPublicGroup(groupId)
   // 참고: 비공개 그룹
   if (!isPublicGroup.isPublic) return (
-    <GroupVerifyPassword
+    <PrivateGroupVerification
       groupId={groupId}
-      sortBy={sortBy}
       searchParams={{ sortBy, isPublic, keyword }}
     />
   )
+
+  const { data, currentPage, totalPages } = await getPosts(groupId, { sortBy, isPublic, keyword })
   // 참고: 공개 그룹
   return (
     <PageLayout paddingBlock='40px 120px'>
@@ -60,8 +62,11 @@ const GroupDetailPage = async ({ params, searchParams }: GroupDetailPageProps) =
               currentData={sortBy}
             />
             <PostsList
-              groupId={groupId}
               searchParams={{ sortBy, isPublic, keyword }}
+              initialPosts={data}
+              initialPage={currentPage}
+              initialHasNext={currentPage < totalPages}
+              groupId={groupId}
             />
           </>
         )}
@@ -70,6 +75,6 @@ const GroupDetailPage = async ({ params, searchParams }: GroupDetailPageProps) =
   )
 }
 
-export const revalidate = 60
+export const revalidate = 0
 export const metadata = META_GROUP_DETAIL
 export default GroupDetailPage
