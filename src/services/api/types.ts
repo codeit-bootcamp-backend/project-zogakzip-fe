@@ -92,6 +92,7 @@ export type Post = {
 
 export type PostDetail = {
   content: string
+  groupId: number
 } & Post
 
 export type IsPublicPost = Pick<Post, 'isPublic' | 'id'>

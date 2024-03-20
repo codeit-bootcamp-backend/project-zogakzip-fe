@@ -6,6 +6,10 @@ import useModal from '@libs/shared/modal/useModal'
 import { PostDeleteFormInput, PostDetail, PostEditFormInput } from '@services/api/types'
 import PostDeleteForm from './PostDeleteForm'
 import PostEditForm from './PostEditForm'
+import useConfirmModal from '@libs/shared/modal/useConfirmModal'
+import putPost from '../data-access-posts/putPost'
+import deletePost from '../data-access-posts/deletePost'
+import { useRouter } from 'next/navigation'
 
 type PostOptionButtonsProps = {
   postId: number
@@ -15,17 +19,42 @@ type PostOptionButtonsProps = {
 const PostOptionButtons = ({ postId, postDetail }: PostOptionButtonsProps) => {
   const postEditFormModal = useModal()
   const postDeleteFormModal = useModal()
+  const { renderConfirmModal, openConfirmModal } = useConfirmModal()
+  const router = useRouter()
 
-  const handleEditPost = (data: PostEditFormInput) => {
-    console.log(`edit post ${postId}번`)
-    console.log(data)
-    postEditFormModal.closeModal()
+  const handleEditPost = async (data: PostEditFormInput) => {
+    try {
+      await putPost(postId, data)
+      postEditFormModal.closeModal()
+      openConfirmModal({
+        title: '추억 수정 성공',
+        description: '추억 정보 수정에 성공했습니다.',
+      })
+    } catch (error) {
+      openConfirmModal({
+        title: '추억 수정 실패',
+        description: (error instanceof Error) ? error.message : '알 수 없는 오류가 발생했습니다.',
+      })
+    }
   }
 
-  const handleDeletePost = (data: PostDeleteFormInput) => {
-    console.log(`delete post ${postId}번`)
-    console.log(data)
-    postDeleteFormModal.closeModal()
+  const handleDeletePost = async (data: PostDeleteFormInput) => {
+    try {
+      await deletePost(postId, data)
+      postDeleteFormModal.closeModal()
+      openConfirmModal({
+        title: '추억 삭제 성공',
+        description: '추억 삭제에 성공했습니다. 그룹 상세 페이지로 이동합니다.',
+        onClose: () => {
+          router.push(`/groups/${postDetail.groupId}`)
+        },
+      })
+    } catch (error) {
+      openConfirmModal({
+        title: '추억 삭제 실패',
+        description: (error instanceof Error) ? error.message : '알 수 없는 오류가 발생했습니다.',
+      })
+    }
   }
 
   return (
@@ -68,6 +97,7 @@ const PostOptionButtons = ({ postId, postDetail }: PostOptionButtonsProps) => {
           />
         )}
       />
+      {renderConfirmModal()}
     </>
   )
 }

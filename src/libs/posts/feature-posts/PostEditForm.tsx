@@ -24,7 +24,7 @@ const PostEditForm = ({
   defaultValues,
   onSubmit,
 }: PostEditFormProps) => {
-  const methods = useForm<PostEditFormInput>({ defaultValues, mode: 'onChange' })
+  const methods = useForm<PostEditFormInput>({ defaultValues })
   const { handleSubmit } = methods
 
   return (
