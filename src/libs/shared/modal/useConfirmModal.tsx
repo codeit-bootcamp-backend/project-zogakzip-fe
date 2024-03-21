@@ -5,7 +5,7 @@ import ConfirmModal from './ConfirmModal'
 
 type ConfirmModalArgs = {
   title: string
-  description: string
+  description?: string
   onClose?: () => void
 }
 
@@ -24,7 +24,7 @@ const useConfirmModal = () => {
       return (
         <ConfirmModal
           title={modalArgs.title}
-          description={modalArgs.description}
+          description={modalArgs?.description || '알 수 없는 오류가 발생했습니다.'}
           ref={modalRef}
           onClose={() => {
             setIsOpened(false)

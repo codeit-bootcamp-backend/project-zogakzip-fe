@@ -27,7 +27,7 @@ const CommentCreateButton = ({ postId }: CommentCreateButtonProps) => {
     } catch (error) {
       openConfirmModal({
         title: '댓글 등록 실패',
-        description: (error instanceof Error) ? error.message : '알 수 없는 오류가 발생했습니다.',
+        ...((error instanceof Error) && { description: error.message }),
       })
     }
   }

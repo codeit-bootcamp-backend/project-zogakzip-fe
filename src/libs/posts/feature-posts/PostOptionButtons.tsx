@@ -33,7 +33,7 @@ const PostOptionButtons = ({ postId, postDetail }: PostOptionButtonsProps) => {
     } catch (error) {
       openConfirmModal({
         title: '추억 수정 실패',
-        description: (error instanceof Error) ? error.message : '알 수 없는 오류가 발생했습니다.',
+        ...((error instanceof Error) && { description: error.message }),
       })
     }
   }
@@ -52,7 +52,7 @@ const PostOptionButtons = ({ postId, postDetail }: PostOptionButtonsProps) => {
     } catch (error) {
       openConfirmModal({
         title: '추억 삭제 실패',
-        description: (error instanceof Error) ? error.message : '알 수 없는 오류가 발생했습니다.',
+        ...((error instanceof Error) && { description: error.message }),
       })
     }
   }

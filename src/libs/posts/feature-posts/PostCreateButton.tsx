@@ -29,7 +29,7 @@ const PostCreateButton = ({ groupId, size = 'medium' }: PostCreateButtonProps) =
     } catch (error) {
       openConfirmModal({
         title: '추억 올리기 실패',
-        description: (error instanceof Error) ? error.message : '알 수 없는 오류가 발생했습니다.',
+        ...((error instanceof Error) && { description: error.message }),
       })
     }
   }

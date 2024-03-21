@@ -29,7 +29,7 @@ const PrivateGroupVerification = ({ groupId, searchParams }: PrivateGroupVerific
     catch (error) {
       openConfirmModal({
         title: '비공개 그룹 접근 실패',
-        description: (error instanceof Error) ? error.message : '알 수 없는 오류가 발생했습니다.',
+        ...((error instanceof Error) && { description: error.message }),
       })
     }
   }
