@@ -151,6 +151,7 @@ export const MOCK_PRIVATE_POSTS: Post[] = [
 
 export const MOCK_POST_DETAIL: PostDetail = {
   id: 1,
+  groupId: 1,
   nickname: '달봉이',
   title: '달봉이네 가족',
   imageUrl: '/images/image-example.png',
