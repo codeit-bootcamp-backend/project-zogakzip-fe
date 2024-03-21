@@ -5,6 +5,8 @@ import FormModal from '@libs/shared/modal/FormModal'
 import useModal from '@libs/shared/modal/useModal'
 import CommentForm from './CommentForm'
 import { CommentFormInput } from '@services/api/types'
+import useConfirmModal from '@libs/shared/modal/useConfirmModal'
+import postComment from '../data-access-comments/postComment'
 
 type CommentCreateButtonProps = {
   postId: number
@@ -12,11 +14,22 @@ type CommentCreateButtonProps = {
 
 const CommentCreateButton = ({ postId }: CommentCreateButtonProps) => {
   const { openModal, closeModal, modalRef } = useModal()
+  const { renderConfirmModal, openConfirmModal } = useConfirmModal()
 
-  const handleCreateComment = (data: CommentFormInput) => {
-    console.log(`추억 ${postId}번에 댓글 달기`)
-    console.log(data)
-    closeModal()
+  const handleCreateComment = async (data: CommentFormInput) => {
+    try {
+      await postComment(postId, data)
+      closeModal()
+      openConfirmModal({
+        title: '댓글 등록 성공',
+        description: '댓글이 성공적으로 등록되었습니다.',
+      })
+    } catch (error) {
+      openConfirmModal({
+        title: '댓글 등록 실패',
+        description: (error instanceof Error) ? error.message : '알 수 없는 오류가 발생했습니다.',
+      })
+    }
   }
 
   return (
@@ -28,6 +41,7 @@ const CommentCreateButton = ({ postId }: CommentCreateButtonProps) => {
         ref={modalRef}
         content={<CommentForm onSubmit={handleCreateComment} />}
       />
+      {renderConfirmModal()}
     </>
   )
 }

@@ -16,10 +16,14 @@ type CommentFormProps = {
 
 const CommentForm = ({ defaultValues, onSubmit }: CommentFormProps) => {
   const methods = useForm<CommentFormInput>({ defaultValues })
-  const { handleSubmit } = methods
+  const { handleSubmit, reset } = methods
   return (
     <FormProvider {...methods}>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={async (e) => {
+        await handleSubmit(onSubmit)(e)
+        if (!defaultValues) reset()
+      }}
+      >
         <div className={cx('container')}>
           <div className={cx('inputs')}>
             <div className={cx('nickanme')}>
