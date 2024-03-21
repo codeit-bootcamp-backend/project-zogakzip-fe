@@ -64,7 +64,7 @@
           }
         ],
         "@typescript-eslint/no-unused-vars": [ // TypeScript에서 사용하지 않는 변수에 대한 경고, 특정 패턴의 변수는 무시
-          "error",
+          "warn",
           {
             "argsIgnorePattern": "^_"
           }
