@@ -3,7 +3,7 @@
 import classNames from 'classnames/bind'
 import styles from './LikeButton.module.scss'
 import Icon from '../icon/Icon'
-import postLikeGroup from '@libs/groups/data-access-groups/PostLikeGroup'
+import postLikeGroup from '@libs/groups/data-access-groups/postLikeGroup'
 import useConfirmModal from '../modal/useConfirmModal'
 import postLikePost from '@libs/posts/data-access-posts/postLikePost'
 
@@ -26,7 +26,7 @@ const LikeButton = ({ type, id }: LikeButtonProps) => {
     } catch (error) {
       openConfirmModal({
         title: '공감하기 실패',
-        description: (error instanceof Error) ? error.message : '알 수 없는 오류가 발생했습니다.',
+        ...((error instanceof Error) && { description: error.message }),
       })
     }
   }
