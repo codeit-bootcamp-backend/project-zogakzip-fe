@@ -54,7 +54,14 @@ const PostDetailLayout = ({ postDetail, optionButtons, likeButton }: PostDetailL
       </div>
       <Divider color='gray' marginTop='60px' marginBottom='60px' />
       <div className={cx('contentContainer')}>
-        <Image className={cx('image')} src={imageUrl || '/images/default-image.svg'} width={780} height={780} alt='추억 사진' />
+        <Image
+          className={cx('image')}
+          src={imageUrl || '/images/default-image.svg'}
+          width={780}
+          height={780}
+          alt='추억 사진'
+          priority
+        />
         <p className={cx('content')}>{content}</p>
       </div>
     </>

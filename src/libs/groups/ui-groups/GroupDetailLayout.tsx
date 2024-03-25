@@ -18,7 +18,14 @@ const GroupDetailLayout = ({ groupDetail, optionButtons, likeButton, badgeCarous
   const { badges, imageUrl, introduction, isPublic, likeCount, name, postCount, createdAt } = groupDetail
   return (
     <div className={cx('container')}>
-      <Image src={imageUrl || '/images/default-image.svg'} width={262} height={273} alt='그룹 사진' className={cx('image')} />
+      <Image
+        src={imageUrl || '/images/default-image.svg'}
+        width={262}
+        height={273}
+        alt='그룹 사진'
+        className={cx('image')}
+        priority
+      />
       <div className={cx('detailContainer')}>
         <div className={cx('top')}>
           <div className={cx('header')}>

@@ -19,7 +19,14 @@ const PostCard = ({ card }: PostCardProps) => {
     <div className={cx('container')}>
       {isPublic && (
         <Link href={`/posts/${id}`}>
-          <Image className={cx('image')} src={imageUrl || '/images/default-image.svg'} width={335} height={335} alt='그룹 사진' />
+          <Image
+            className={cx('image')}
+            src={imageUrl || '/images/default-image.svg'}
+            width={335}
+            height={335}
+            alt='그룹 사진'
+            priority
+          />
         </Link>
       )}
       <div className={cx('contentContainer')}>

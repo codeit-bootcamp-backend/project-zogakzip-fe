@@ -19,7 +19,16 @@ const GroupCard = ({ card }: GroupCardProps) => {
   return (
     <div className={cx('container')}>
       <Link href={`/groups/${id}`}>
-        {isPublic && <Image className={cx('image')} src={imageUrl || '/images/default-image.svg'} width={335} height={335} alt='그룹 사진' />}
+        {isPublic && (
+          <Image
+            className={cx('image')}
+            src={imageUrl || '/images/default-image.svg'}
+            width={335}
+            height={335}
+            alt='그룹 사진'
+            priority
+          />
+        )}
       </Link>
       <div className={cx('contentContainer')}>
         <div className={cx('header')}>
@@ -44,13 +53,13 @@ const GroupCard = ({ card }: GroupCardProps) => {
           )}
           <div className={cx('countContainer')}>
             <h4 className={cx('label')}>추억</h4>
-            <div className={cx('count')}>{postCount}</div>
+            <div className={cx('count')}>{postCount ?? 0}</div>
           </div>
           <div className={cx('countContainer')}>
             <h4 className={cx('label')}>그룹 공감</h4>
             <div className={cx('count')}>
               <Icon name='flower' width={18} height={18} alt='꽃' />
-              <span className={cx('likeCount')}>{formatLikeCount(likeCount)}</span>
+              <span className={cx('likeCount')}>{likeCount ? formatLikeCount(likeCount) : 0}</span>
             </div>
           </div>
         </div>
