@@ -35,7 +35,7 @@ const LikeButton = ({ type, id }: LikeButtonProps) => {
     <>
       <button onClick={handleClickLikeButton} className={cx('container')}>
         <div className={cx('contentContainer')}>
-          <Icon name='flower' width={22.88} height={22} alt='꽃' />
+          <Icon name='flower' width={22} height={22} alt='꽃' />
           <span className={cx('text')}>공감 보내기</span>
         </div>
       </button>
