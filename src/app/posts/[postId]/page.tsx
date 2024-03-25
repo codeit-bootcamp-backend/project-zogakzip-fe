@@ -8,7 +8,6 @@ import getPostDetail from '@libs/posts/data-access-posts/getPostDetail'
 import getComments from '@libs/comments/data-access-comments/getComments'
 import PostDetailLayout from '@libs/posts/ui-posts/PostDetailLayout'
 import PostOptionButtons from '@libs/posts/feature-posts/PostOptionButtons'
-import LikeButton from '@libs/shared/button/LikeButton'
 import CommentsLayout from '@libs/comments/ui-comments/CommentsLayout'
 import CommentCreateButton from '@libs/comments/feature-comments/CommentCreateButton'
 import CommentsList from '@libs/comments/feature-comments/CommentsList'
@@ -45,7 +44,6 @@ const PostDetailPage = async ({ params, searchParams }: PostDetailPageProps) => 
       <PostDetailLayout
         postDetail={postDetail}
         optionButtons={<PostOptionButtons postId={postId} postDetail={postDetail} />}
-        likeButton={<LikeButton type='post' id={postId} />}
       />
       <CommentsLayout
         createCommentButton={(<CommentCreateButton postId={postId} />)}

@@ -2,7 +2,6 @@
 
 import PageLayout from '@libs/shared/layout/PageLayout'
 import useAsync from '@libs/shared/util-hook/useAsync'
-import LikeButton from '@libs/shared/button/LikeButton'
 import getPostDetail from '../data-access-posts/getPostDetail'
 import getComments from '@libs/comments/data-access-comments/getComments'
 import PostDetailLayout from '../ui-posts/PostDetailLayout'
@@ -29,7 +28,6 @@ const PrivatePostVerifiedPage = ({ postId, page }: PrivatePostVerifiedPageProps)
       <PostDetailLayout
         postDetail={postDetail}
         optionButtons={<PostOptionButtons postId={postId} postDetail={postDetail} />}
-        likeButton={<LikeButton type='post' id={postId} />}
       />
       {commentsPagination && (
         <CommentsLayout

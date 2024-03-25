@@ -1,3 +1,5 @@
+'use client'
+
 import classNames from 'classnames/bind'
 import styles from './PostDetailLayout.module.scss'
 import { PostDetail } from '@services/api/types'
@@ -6,17 +8,24 @@ import Image from 'next/image'
 import { format } from 'date-fns/format'
 import Icon from '@libs/shared/icon/Icon'
 import formatLikeCount from '@libs/shared/util-util/formatLikeCount'
+import LikeButton from '@libs/shared/button/LikeButton'
+import { useEffect, useState } from 'react'
 
 const cx = classNames.bind(styles)
 
 type PostDetailLayoutProps = {
   postDetail: PostDetail
   optionButtons: React.ReactNode
-  likeButton: React.ReactNode
 }
 
-const PostDetailLayout = ({ postDetail, optionButtons, likeButton }: PostDetailLayoutProps) => {
-  const { commentCount, content, imageUrl, isPublic, likeCount, location, moment, nickname, tags, title } = postDetail
+const PostDetailLayout = ({ postDetail, optionButtons }: PostDetailLayoutProps) => {
+  const { id, commentCount, content, imageUrl, isPublic, likeCount: initialLikeCount, location, moment, nickname, tags, title } = postDetail
+
+  const [likeCount, setLikeCount] = useState(initialLikeCount)
+
+  useEffect(() => {
+    setLikeCount(initialLikeCount)
+  }, [initialLikeCount])
 
   return (
     <>
@@ -49,7 +58,13 @@ const PostDetailLayout = ({ postDetail, optionButtons, likeButton }: PostDetailL
               </div>
             </h3>
           </div>
-          <div className={cx('right')}>{likeButton}</div>
+          <div className={cx('right')}>
+            <LikeButton
+              type='group'
+              id={id}
+              setLikeCount={setLikeCount}
+            />
+          </div>
         </div>
       </div>
       <Divider color='gray' marginTop='60px' marginBottom='60px' />

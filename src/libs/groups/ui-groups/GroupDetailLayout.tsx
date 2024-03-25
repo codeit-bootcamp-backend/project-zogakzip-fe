@@ -1,21 +1,30 @@
+'use client'
+
 import classNames from 'classnames/bind'
 import styles from './GroupDetailLayout.module.scss'
 import { GroupDetail } from '@services/api/types'
 import Image from 'next/image'
 import formatLikeCount from '@libs/shared/util-util/formatLikeCount'
 import { differenceInDays } from 'date-fns/differenceInDays'
+import { useEffect, useState } from 'react'
+import LikeButton from '@libs/shared/button/LikeButton'
 
 const cx = classNames.bind(styles)
 
 type GroupDetailLayoutProps = {
   groupDetail: GroupDetail
   optionButtons: React.ReactNode
-  likeButton: React.ReactNode
   badgeCarousel: React.ReactNode
 }
 
-const GroupDetailLayout = ({ groupDetail, optionButtons, likeButton, badgeCarousel }: GroupDetailLayoutProps) => {
-  const { badges, imageUrl, introduction, isPublic, likeCount, name, postCount, createdAt } = groupDetail
+const GroupDetailLayout = ({ groupDetail, optionButtons, badgeCarousel }: GroupDetailLayoutProps) => {
+  const { id, badges, imageUrl, introduction, isPublic, likeCount: initialLikeCount, name, postCount, createdAt } = groupDetail
+  const [likeCount, setLikeCount] = useState(initialLikeCount)
+
+  useEffect(() => {
+    setLikeCount(initialLikeCount)
+  }, [initialLikeCount])
+
   return (
     <div className={cx('container')}>
       <Image
@@ -54,7 +63,13 @@ const GroupDetailLayout = ({ groupDetail, optionButtons, likeButton, badgeCarous
               {badges?.length > 0 && badgeCarousel}
             </div>
           </div>
-          <div className={cx('likeButtonWrapper')}>{likeButton}</div>
+          <div className={cx('likeButtonWrapper')}>
+            <LikeButton
+              type='group'
+              id={id}
+              setLikeCount={setLikeCount}
+            />
+          </div>
         </div>
       </div>
     </div>

@@ -11,7 +11,6 @@ import useAsync from '@libs/shared/util-hook/useAsync'
 import getPosts from '@libs/posts/data-access-posts/getPosts'
 import getGroupDetail from '../data-access-groups/getGroupDetail'
 import GroupOptionButtons from './GroupOptionButtons'
-import LikeButton from '@libs/shared/button/LikeButton'
 import BadgeCarousel from '../ui-groups/BadgeCarousel'
 import GroupDetailLayout from '../ui-groups/GroupDetailLayout'
 import PostsList from '@libs/posts/feature-posts/PostsList'
@@ -34,7 +33,6 @@ const PrivateGroupVerifiedPage = ({ groupId, searchParams }: PrivateGroupVerifie
       <GroupDetailLayout
         groupDetail={groupDetail}
         optionButtons={<GroupOptionButtons groupId={groupId} groupDetail={groupDetail} />}
-        likeButton={<LikeButton type='group' id={groupId} />}
         // badgeCarousel={<BadgeCarousel badges={groupDetail.badges} />}
         badgeCarousel={<BadgeCarousel badges={[]} />}
       />

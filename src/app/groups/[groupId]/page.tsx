@@ -14,7 +14,6 @@ import getPosts from '@libs/posts/data-access-posts/getPosts'
 import getGroupDetail from '@libs/groups/data-access-groups/getGroupDetail'
 import GroupDetailLayout from '@libs/groups/ui-groups/GroupDetailLayout'
 import GroupOptionButtons from '@libs/groups/feature-groups/GroupOptionButtons'
-import LikeButton from '@libs/shared/button/LikeButton'
 import BadgeCarousel from '@libs/groups/ui-groups/BadgeCarousel'
 
 type GroupDetailPageProps = {
@@ -58,7 +57,6 @@ const GroupDetailPage = async ({ params, searchParams }: GroupDetailPageProps) =
       <GroupDetailLayout
         groupDetail={groupDetail}
         optionButtons={<GroupOptionButtons groupId={groupId} groupDetail={groupDetail} />}
-        likeButton={<LikeButton type='group' id={groupId} />}
         // badgeCarousel={<BadgeCarousel badges={groupDetail.badges} />}
         badgeCarousel={<BadgeCarousel badges={[]} />}
       />
