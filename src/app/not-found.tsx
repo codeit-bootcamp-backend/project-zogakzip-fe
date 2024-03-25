@@ -1,8 +1,8 @@
-import NotFound from '@libs/shared/not-found/NotFound'
+import UiError from '@libs/shared/Error/UiError'
 
 const NotFoundPage = () => {
   return (
-    <NotFound />
+    <UiError type='404' />
   )
 }
 
