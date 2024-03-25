@@ -22,14 +22,14 @@ const TagsFieldConnect = <
   rules,
 }: TagsFieldConnectProps<F, N>) => {
   const { setValue, setError } = useFormContext()
-  // TODO: 타입 문제 해결. 단언으로 임시 해결 중
+  // TODO-3: 타입 문제 해결. 단언으로 임시 해결 중
   const tags = useWatch({ name }) as string[]
 
   const handleAddTag = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.currentTarget.value === '') return
     if (tags.length >= 10) return setError(name, { message: '태그는 최대 10개까지 등록 가능합니다.' })
     if (e.currentTarget.value.length > 20) return setError(name, { message: '태그는 20자 이내로 입력해 주세요.' })
-    // TODO: 타입 문제 해결. 단언으로 임시 해결 중
+    // TODO-3: 타입 문제 해결. 단언으로 임시 해결 중
     setValue(name as string, [...tags, e.currentTarget.value], { shouldValidate: true })
     e.currentTarget.value = ''
   }

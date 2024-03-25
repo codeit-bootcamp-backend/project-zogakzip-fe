@@ -32,7 +32,7 @@ const ImageUploadConnect = <
     const file = e.target.files?.[0]
     if (!file) return
     const imageUrl = await uploadImage(file)
-    // TODO: 타입 문제 해결. 단언으로 임시 해결 중
+    // TODO-3: 타입 문제 해결. 단언으로 임시 해결 중
     if (imageUrl) setValue(name as string, imageUrl)
   }
 

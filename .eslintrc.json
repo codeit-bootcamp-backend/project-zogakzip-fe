@@ -80,16 +80,6 @@
         "react/jsx-key": "error", // React JSX 요소에 대한 고유한 key 속성 부여를 강제
         "import/prefer-default-export": "off", // 단일 내보내기가 아닌 모듈에서 명시적으로 내보내기를 사용하는 것을 허용
         "no-restricted-exports": "off", // 특정 모듈에서 내보내기를 제한하는 규칙을 비활성화
-        // TODO: 개발 완료 후 주석 해제
-        // "no-console": [
-        //   "error",
-        //   {
-        //     "allow": [
-        //       "warn",
-        //       "error"
-        //     ]
-        //   }
-        // ], // console.log, console.warn, console.error 등을 사용할 때 경고를 표시하지만, warn 및 error는 허용
         "radix": "off", // parseInt 함수 호출 시 진수 지정을 강제하지 않도록 비활성화
         "default-case": "off", // switch 문에서 default case의 사용을 강제하지 않도록 비활성화
         "react/react-in-jsx-scope": "off", // JSX를 사용할 때 React를 명시적으로 import하지 않아도 되도록 비활성화
@@ -160,7 +150,6 @@
             "children": "never" // 자식 요소에서 중괄호 사용을 허용하지 않음
           }
         ],
-        // TODO: 개발 완료 후 주석 해제
         "react/self-closing-comp": "off", // self-closing 컴포넌트를 사용하도록 강제
         "react/jsx-wrap-multilines": [ // 다중 줄의 JSX를 괄호로 감싸는 규칙 설정
           "error",

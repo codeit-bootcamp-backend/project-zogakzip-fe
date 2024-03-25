@@ -49,7 +49,7 @@ const GroupDetailLayout = ({ groupDetail, optionButtons, likeButton, badgeCarous
         <div className={cx('bottom')}>
           <div className={cx('badgesContainer')}>
             <div className={cx('label')}>획득 배지</div>
-            {/* TODO: 캐러셀만 클라이언트 로딩 처리인 상태 개선 방법 생각해보기 */}
+            {/* TODO-2: 캐러셀만 클라이언트 로딩 처리인 상태 개선 방법 생각해보기 */}
             <div className={cx('carouselWrapper')}>
               {badges?.length > 0 && badgeCarousel}
             </div>

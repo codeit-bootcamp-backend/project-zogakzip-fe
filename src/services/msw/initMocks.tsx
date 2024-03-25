@@ -2,7 +2,7 @@ const initMocks = async () => {
   const isServer = typeof window === 'undefined'
 
   /**
- * TODO: redundant worker 선언 문제 해결
+ * TODO-3: redundant worker 선언 문제 해결
  * Found a redundant "worker.start()" call. Note that starting the worker while mocking is already enabled will have no effect. Consider removing this "worker.start()" call.
  */
   if (isServer) {

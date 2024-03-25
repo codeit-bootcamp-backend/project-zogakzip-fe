@@ -15,7 +15,7 @@ const GroupCreateForm = ({ }: GroupCreateFormProps) => {
   const router = useRouter()
 
   const handleCreateGroup = async (data: GroupFormInput) => {
-    // TODO: 비밀번호 유출 경고
+    // TODO-1: 비밀번호 유출 경고
     try {
       await postGroup(data)
       openConfirmModal({

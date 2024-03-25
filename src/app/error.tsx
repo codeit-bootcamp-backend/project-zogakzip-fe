@@ -8,7 +8,7 @@ type ErrorProps = {
 }
 
 const Error = ({ error, reset }: ErrorProps) => {
-  // TODO: 디자인 요청 및 반영
+  // TODO-1: 디자인 요청 및 반영
   useEffect(() => {
     console.error(error)
   }, [error])

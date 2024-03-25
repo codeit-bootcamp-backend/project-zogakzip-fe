@@ -34,7 +34,7 @@ const DatePicker = forwardRef<HTMLInputElement, DatePickerProps>(({
 
   return (
     <div className={cx('container')}>
-      {/* TODO: 날짜 선택 후 텍스트 커서 컨트롤 */}
+      {/* TODO-3: 날짜 선택 후 텍스트 커서 컨트롤 */}
       <ReactDatePicker
         {...restProps}
         selected={date}

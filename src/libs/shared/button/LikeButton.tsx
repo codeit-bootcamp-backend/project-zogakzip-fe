@@ -17,8 +17,7 @@ type LikeButtonProps = {
 const LikeButton = ({ type, id }: LikeButtonProps) => {
   const { renderConfirmModal, openConfirmModal } = useConfirmModal()
 
-  // TODO: 꽃 날리는 애니메이션
-  // TODO: 그룹 공감 정보 업데이트
+  // TODO-2: 꽃 날리는 애니메이션
   const handleClickLikeButton = async () => {
     try {
       if (type === 'group') await postLikeGroup(id)

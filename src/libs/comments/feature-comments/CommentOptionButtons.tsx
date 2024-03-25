@@ -23,7 +23,7 @@ const CommentOptionButtons = ({ comment }: CommentOptionButtonsProps) => {
   const commentDeleteFormModal = useModal()
   const { renderConfirmModal, openConfirmModal } = useConfirmModal()
 
-  // TODO: PUT, DELETE 백엔드 개발 완료 시 점검 필요
+  // TODO-1: PUT, DELETE 백엔드 개발 완료 시 점검 필요
   const handleEditComment = async (data: CommentFormInput) => {
     try {
       await putComment(comment.id, data)

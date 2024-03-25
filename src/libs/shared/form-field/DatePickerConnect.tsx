@@ -26,6 +26,7 @@ const DatePickerConnect = <
       defaultValue={defaultValue}
       rules={rules}
       render={({ field, fieldState }) => (
+        // TODO-1: 추억 올리기 이후 인풋 값 초기화 안되고 있음
         <DatePicker
           {...field}
           {...datePickerProps}
