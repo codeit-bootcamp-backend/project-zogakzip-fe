@@ -2,7 +2,7 @@
 
 import { Group, GroupsSearchParams } from '@services/api/types'
 import UiGroupsList from '../ui-groups/UiGroupsList'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Button from '@libs/shared/button/Button'
 import getGroups from '../data-access-groups/getGroups'
 
@@ -24,6 +24,12 @@ const GroupsList = ({ initialGroups, initialPage, initialHasNext, searchParams }
     setPage(currentPage)
     setHasNext(currentPage < totalPages)
   }
+
+  useEffect(() => {
+    setGroups(initialGroups)
+    setPage(initialPage)
+    setHasNext(initialHasNext)
+  }, [initialGroups, initialPage, initialHasNext])
 
   return (
     <UiGroupsList

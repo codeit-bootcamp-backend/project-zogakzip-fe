@@ -29,7 +29,9 @@ const PostsList = ({ groupId, initialPosts, initialHasNext, initialPage, searchP
 
   useEffect(() => {
     setPosts(initialPosts)
-  }, [initialPosts])
+    setPage(initialPage)
+    setHasNext(initialHasNext)
+  }, [initialPosts, initialPage, initialHasNext])
 
   return (
     <UiPostsList
