@@ -4,6 +4,7 @@ import classNames from 'classnames/bind'
 import styles from './Dropdown.module.scss'
 import Icon from '../icon/Icon'
 import usePopover from './usePopover'
+import { useRef } from 'react'
 
 const cx = classNames.bind(styles)
 
@@ -18,11 +19,20 @@ type DropdownProps<T> = {
 
 const Dropdown = <T extends string>({ filters, currentData, onSelect }: DropdownProps<T>) => {
   const selectedFilter = filters.find((filter) => filter.data === currentData)
-  const { popoverRef, isOpened, closePopover, togglePopover } = usePopover()
+
+  const triggerRef = useRef<HTMLButtonElement>(null)
+  const { popoverRef, isOpened, closePopover, togglePopover } = usePopover(triggerRef)
 
   return (
     <div className={cx('container')}>
-      <button type='button' onClick={() => { togglePopover() }} className={cx('trigger')}>
+      <button
+        type='button'
+        onClick={() => {
+          togglePopover()
+        }}
+        ref={triggerRef}
+        className={cx('trigger')}
+      >
         <p className={cx('selectedOption')}>{selectedFilter?.text}</p>
         <div className={cx('iconWrapper')}>
           <Icon name='toggle-arrow' width={8} height={4} alt='드롭다운 화살표' rotate={isOpened ? 180 : 360} />

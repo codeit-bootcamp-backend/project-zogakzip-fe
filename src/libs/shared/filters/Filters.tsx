@@ -36,7 +36,6 @@ const Filters = <T extends string>({ placeholder, filters, currentData }: Filter
         currentData={currentData}
         onSelect={(data) => {
           // TODO-2: URL 변경 전 currentData 변경 시키기
-          // TODO-2: 필요한 것 같으면 useOutsideClick 반영
           router.push(
             updateQueryURL({
               'sortBy': data,
