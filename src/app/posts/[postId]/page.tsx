@@ -37,7 +37,7 @@ const PostDetailPage = async ({ params, searchParams }: PostDetailPageProps) => 
     getPostDetail(postId),
     getComments(postId, page),
   ])
-  const { data, currentPage, totalPages } = commentsPagination
+  const { data, currentPage, totalPages, totalItemCount } = commentsPagination
   // 참고: 공개 추억
   return (
     <PageLayout paddingBlock='40px 120px'>
@@ -47,7 +47,14 @@ const PostDetailPage = async ({ params, searchParams }: PostDetailPageProps) => 
       />
       <CommentsLayout
         createCommentButton={(<CommentCreateButton postId={postId} />)}
-        contents={<CommentsList comments={data} currentPage={currentPage} totalPages={totalPages} />}
+        contents={(
+          <CommentsList
+            comments={data}
+            currentPage={currentPage}
+            totalPages={totalPages}
+            totalItemCount={totalItemCount}
+          />
+        )}
       />
     </PageLayout>
   )

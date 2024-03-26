@@ -11,12 +11,13 @@ type CommentsListProps = {
   comments: CommentType[]
   currentPage: number
   totalPages: number
+  totalItemCount: number
 }
 
-const CommentsList = ({ comments, currentPage, totalPages }: CommentsListProps) => {
+const CommentsList = ({ comments, currentPage, totalPages, totalItemCount }: CommentsListProps) => {
   return (
     <>
-      <h3 className={cx('label')}>댓글 {comments.length}</h3>
+      <h3 className={cx('label')}>댓글 {totalItemCount}</h3>
       <Divider marginTop='10px' marginBottom='30px' color='black' />
       {comments.length > 0
         ? (

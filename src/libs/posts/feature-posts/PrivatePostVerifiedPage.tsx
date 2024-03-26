@@ -37,6 +37,7 @@ const PrivatePostVerifiedPage = ({ postId, page }: PrivatePostVerifiedPageProps)
               comments={commentsPagination.data}
               currentPage={commentsPagination.currentPage}
               totalPages={commentsPagination.totalPages}
+              totalItemCount={commentsPagination.totalItemCount}
             />
           )}
         />
