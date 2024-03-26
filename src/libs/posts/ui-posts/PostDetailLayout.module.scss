@@ -76,5 +76,6 @@
   .content {
     @include glyph20Regular(28px);
     margin-top: 60px;
+    white-space: pre;
   }
 }

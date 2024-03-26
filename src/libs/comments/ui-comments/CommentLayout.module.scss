@@ -18,6 +18,7 @@
 
     .content {
       @include glyph16Medium;
+      white-space: pre;
     }
   }
 }
