@@ -23,7 +23,7 @@ const SearchBar = ({ placeholder }: SearchBarProps) => {
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (!inputRef.current) return
-    router.push(updateQueryURL({ keyword: inputRef.current.value }))
+    router.push(updateQueryURL({ keyword: inputRef.current.value }), { scroll: false })
   }
 
   return (
