@@ -46,7 +46,12 @@ const PostDetailPage = async ({ params, searchParams }: PostDetailPageProps) => 
         optionButtons={<PostOptionButtons postId={postId} postDetail={postDetail} />}
       />
       <CommentsLayout
-        createCommentButton={(<CommentCreateButton postId={postId} />)}
+        createCommentButton={(
+          <CommentCreateButton
+            postId={postId}
+            totalItemCount={totalItemCount}
+          />
+        )}
         contents={(
           <CommentsList
             comments={data}

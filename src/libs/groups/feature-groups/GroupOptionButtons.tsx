@@ -14,9 +14,10 @@ import deleteGroup from '../data-access-groups/deleteGroup'
 type GroupOptionButtonsProps = {
   groupId: number
   groupDetail: GroupDetail
+  onSuccessEdit?: (data: GroupDetail) => void
 }
 
-const GroupOptionButtons = ({ groupId, groupDetail }: GroupOptionButtonsProps) => {
+const GroupOptionButtons = ({ groupId, groupDetail, onSuccessEdit }: GroupOptionButtonsProps) => {
   const groupEditFormModal = useModal()
   const groupDeleteFormModal = useModal()
   const { renderConfirmModal, openConfirmModal } = useConfirmModal()
@@ -24,7 +25,8 @@ const GroupOptionButtons = ({ groupId, groupDetail }: GroupOptionButtonsProps) =
 
   const handleEditGroup = async (data: GroupFormInput) => {
     try {
-      await putGroup(groupId, data)
+      const response = await putGroup(groupId, data)
+      if (onSuccessEdit) onSuccessEdit(response)
       groupEditFormModal.closeModal()
       openConfirmModal({
         title: '그룹 수정 성공',

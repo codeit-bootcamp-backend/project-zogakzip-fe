@@ -12,19 +12,33 @@ type CommentsListProps = {
   currentPage: number
   totalPages: number
   totalItemCount: number
+  onSuccessEdit?: (data: CommentType) => void
+  onSuccessDelete?: (commentId: number) => void
 }
 
-const CommentsList = ({ comments, currentPage, totalPages, totalItemCount }: CommentsListProps) => {
+const CommentsList = ({
+  comments,
+  currentPage,
+  totalPages,
+  totalItemCount,
+  onSuccessDelete,
+  onSuccessEdit,
+}: CommentsListProps) => {
   return (
     <>
       <h3 className={cx('label')}>댓글 {totalItemCount}</h3>
       <Divider marginTop='10px' marginBottom='30px' color='black' />
-      {comments.length > 0
+      {totalItemCount > 0
         ? (
           <>
             <div className={cx('commentsContainer')}>
               {comments.map((comment) => (
-                <Comment key={comment.id} comment={comment} />
+                <Comment
+                  key={comment.id}
+                  comment={comment}
+                  onSuccessDelete={onSuccessDelete}
+                  onSuccessEdit={onSuccessEdit}
+                />
               ))}
             </div>
             <div className={cx('paginationWrapper')}>

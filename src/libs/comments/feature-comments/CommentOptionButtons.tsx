@@ -11,22 +11,29 @@ import CommentDeleteForm from './CommentDeleteForm'
 import useConfirmModal from '@libs/shared/modal/useConfirmModal'
 import putComment from '../data-access-comments/putComment'
 import deleteComment from '../data-access-comments/deleteComment'
+import { useRouter } from 'next/navigation'
+import useUpdateQueryURL from '@libs/shared/util-hook/useUpdateQueryURL'
 
 const cx = classNames.bind(styles)
 
 type CommentOptionButtonsProps = {
   comment: CommentType
+  onSuccessEdit?: (data: CommentType) => void
+  onSuccessDelete?: (commentId: number) => void
 }
 
-const CommentOptionButtons = ({ comment }: CommentOptionButtonsProps) => {
+const CommentOptionButtons = ({ comment, onSuccessEdit, onSuccessDelete }: CommentOptionButtonsProps) => {
   const commentEditFormModal = useModal()
   const commentDeleteFormModal = useModal()
   const { renderConfirmModal, openConfirmModal } = useConfirmModal()
 
-  // TODO-1: PUT, DELETE 백엔드 개발 완료 시 점검 필요
+  const router = useRouter()
+  const { updateQueryURL } = useUpdateQueryURL()
+
   const handleEditComment = async (data: CommentFormInput) => {
     try {
-      await putComment(comment.id, data)
+      const response = await putComment(comment.id, data)
+      if (onSuccessEdit) onSuccessEdit(response)
       commentEditFormModal.closeModal()
       openConfirmModal({
         title: '댓글 수정 성공',
@@ -43,6 +50,8 @@ const CommentOptionButtons = ({ comment }: CommentOptionButtonsProps) => {
   const handleDeleteComment = async (data: CommentDeleteFormInput) => {
     try {
       await deleteComment(comment.id, data)
+      router.push(updateQueryURL({ page: 1 }), { scroll: false })
+      if (onSuccessDelete) onSuccessDelete(comment.id)
       commentDeleteFormModal.closeModal()
       openConfirmModal({
         title: '댓글 삭제 성공',

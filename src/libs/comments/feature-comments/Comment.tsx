@@ -4,13 +4,21 @@ import CommentOptionButtons from './CommentOptionButtons'
 
 type CommentProps = {
   comment: CommentType
+  onSuccessEdit?: (data: CommentType) => void
+  onSuccessDelete?: (commentId: number) => void
 }
 
-const Comment = ({ comment }: CommentProps) => {
+const Comment = ({ comment, onSuccessDelete, onSuccessEdit }: CommentProps) => {
   return (
     <CommentLayout
       comment={comment}
-      optionButtons={<CommentOptionButtons comment={comment} />}
+      optionButtons={(
+        <CommentOptionButtons
+          comment={comment}
+          onSuccessEdit={onSuccessEdit}
+          onSuccessDelete={onSuccessDelete}
+        />
+      )}
     />
   )
 }

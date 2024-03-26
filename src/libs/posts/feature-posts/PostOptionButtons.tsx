@@ -14,9 +14,10 @@ import { useRouter } from 'next/navigation'
 type PostOptionButtonsProps = {
   postId: number
   postDetail: PostDetail
+  onSuccessEdit?: (data: PostDetail) => void
 }
 
-const PostOptionButtons = ({ postId, postDetail }: PostOptionButtonsProps) => {
+const PostOptionButtons = ({ postId, postDetail, onSuccessEdit }: PostOptionButtonsProps) => {
   const postEditFormModal = useModal()
   const postDeleteFormModal = useModal()
   const { renderConfirmModal, openConfirmModal } = useConfirmModal()
@@ -24,7 +25,8 @@ const PostOptionButtons = ({ postId, postDetail }: PostOptionButtonsProps) => {
 
   const handleEditPost = async (data: PostEditFormInput) => {
     try {
-      await putPost(postId, data)
+      const response = await putPost(postId, data)
+      if (onSuccessEdit) onSuccessEdit(response)
       postEditFormModal.closeModal()
       openConfirmModal({
         title: '추억 수정 성공',
