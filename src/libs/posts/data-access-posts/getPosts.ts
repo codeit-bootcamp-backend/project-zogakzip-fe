@@ -1,3 +1,5 @@
+'use server'
+
 import { PRIVATE_POSTS_PAGE_SIZE, PUBLIC_POSTS_PAGE_SIZE } from '@libs/shared/pagination/constants'
 import { getRequest } from '@services/api/requests'
 import { PostsSearchParams, Post, PaginationResponse } from '@services/api/types'

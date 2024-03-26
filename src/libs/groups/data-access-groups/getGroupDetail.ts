@@ -1,3 +1,5 @@
+'use server'
+
 import { getRequest } from '@services/api/requests'
 import { GroupDetail } from '@services/api/types'
 
