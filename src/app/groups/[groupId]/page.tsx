@@ -57,8 +57,7 @@ const GroupDetailPage = async ({ params, searchParams }: GroupDetailPageProps) =
       <GroupDetailLayout
         groupDetail={groupDetail}
         optionButtons={<GroupOptionButtons groupId={groupId} groupDetail={groupDetail} />}
-        // badgeCarousel={<BadgeCarousel badges={groupDetail.badges} />}
-        badgeCarousel={<BadgeCarousel badges={[]} />}
+        badgeCarousel={<BadgeCarousel badges={groupDetail.badges} />}
       />
       <Divider marginTop='120px' marginBottom='120px' color='gray' />
       <SectionLayout
