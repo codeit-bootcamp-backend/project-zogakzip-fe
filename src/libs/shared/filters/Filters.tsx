@@ -7,6 +7,7 @@ import Tab from '../tab/Tab'
 import SearchBar from '../search-bar/SearchBar'
 import { useRouter } from 'next/navigation'
 import useUpdateQueryURL from '../util-hook/useUpdateQueryURL'
+import { useState } from 'react'
 
 const cx = classNames.bind(styles)
 
@@ -19,7 +20,8 @@ type FiltersProps<T> = {
   currentData: T
 }
 
-const Filters = <T extends string>({ placeholder, filters, currentData }: FiltersProps<T>) => {
+const Filters = <T extends string>({ placeholder, filters, currentData: initialSortBy }: FiltersProps<T>) => {
+  const [sortBy, setSortBy] = useState(initialSortBy)
   const router = useRouter()
   const { updateQueryURL } = useUpdateQueryURL()
   return (
@@ -33,9 +35,9 @@ const Filters = <T extends string>({ placeholder, filters, currentData }: Filter
       />
       <Dropdown
         filters={filters}
-        currentData={currentData}
+        currentData={sortBy}
         onSelect={(data) => {
-          // TODO-2: URL 변경 전 currentData 변경 시키기
+          setSortBy(data)
           router.push(
             updateQueryURL({
               'sortBy': data,
