@@ -8,6 +8,7 @@ const deleteComment = async (commentId: number, body: CommentDeleteFormInput) =>
   const response = await deleteRequest(`/comments/${commentId}`, body)
 
   revalidateTag('comments')
+  revalidateTag('postDetail')
 
   return response
 }

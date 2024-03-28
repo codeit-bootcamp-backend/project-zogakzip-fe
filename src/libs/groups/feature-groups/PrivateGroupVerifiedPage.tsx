@@ -62,7 +62,6 @@ const PrivateGroupVerifiedPage = ({ groupId, searchParams }: PrivateGroupVerifie
               currentData={searchParams.sortBy}
             />
             {postsPagination && (
-              // TODO-3: 가능하다면 keepPreviousData
               <PostsList
                 searchParams={searchParams}
                 initialPosts={postsPagination.data}

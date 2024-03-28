@@ -7,8 +7,8 @@ import { revalidatePath, revalidateTag } from 'next/cache'
 const putGroup = async (groupId: number, body: GroupFormInput) => {
   const response = await putRequest<GroupDetail, GroupFormInput>(`/groups/${groupId}`, body)
 
-  revalidatePath(`/groups/${groupId}`)
-  revalidateTag('groups')
+  revalidatePath('/groups')
+  revalidateTag('groupDetail')
 
   return response
 }
