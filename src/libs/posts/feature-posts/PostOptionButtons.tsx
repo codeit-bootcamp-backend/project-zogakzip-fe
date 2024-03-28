@@ -49,6 +49,7 @@ const PostOptionButtons = ({ postId, postDetail, onSuccessEdit }: PostOptionButt
         description: '추억 삭제에 성공했습니다. 그룹 상세 페이지로 이동합니다.',
         onClose: () => {
           router.push(`/groups/${postDetail.groupId}`)
+          router.refresh()
         },
       })
     } catch (error) {

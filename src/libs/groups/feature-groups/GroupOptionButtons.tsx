@@ -49,6 +49,7 @@ const GroupOptionButtons = ({ groupId, groupDetail, onSuccessEdit }: GroupOption
         description: '그룹 삭제에 성공했습니다. 그룹 목록 페이지로 이동합니다.',
         onClose: () => {
           router.push('/groups')
+          router.refresh()
         },
       })
     } catch (error) {
