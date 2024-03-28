@@ -68,7 +68,7 @@ const PostCreateForm = ({
             <div className={cx('image')}>
               <FieldLabel label='이미지' />
               <ImageUploadConnect
-                name='image'
+                name='imageUrl'
               />
             </div>
             <div className={cx('content')}>

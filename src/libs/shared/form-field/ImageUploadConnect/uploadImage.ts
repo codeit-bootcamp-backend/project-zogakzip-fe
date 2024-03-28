@@ -16,7 +16,6 @@ const uploadImage = async (file: File) => {
   }
 
   try {
-    // TODO-1: 브라우저에서 이미지 업로드 시, 에러 발생 중
     const formData = new FormData()
     formData.append('image', file)
     // 참고: header 형식으로 multipart/form-data를 명시하면 오히려 boundary가 붙지 않아 오류가 발생함

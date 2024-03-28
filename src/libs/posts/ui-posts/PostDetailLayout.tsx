@@ -60,7 +60,7 @@ const PostDetailLayout = ({ postDetail, optionButtons }: PostDetailLayoutProps) 
           </div>
           <div className={cx('right')}>
             <LikeButton
-              type='group'
+              type='post'
               id={id}
               setLikeCount={setLikeCount}
             />

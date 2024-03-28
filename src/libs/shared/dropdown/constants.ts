@@ -30,6 +30,6 @@ export const SORT_BY_POSTS_FILTERS = [
   },
   {
     data: SortByPosts.mostCommented,
-    text: '공감순',
+    text: '댓글 많은 순',
   },
 ]
