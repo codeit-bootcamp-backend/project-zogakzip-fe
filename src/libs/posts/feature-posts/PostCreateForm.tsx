@@ -130,7 +130,7 @@ const PostCreateForm = ({
                 rules={{
                   required: '필수 입력사항입니다.',
                   pattern: {
-                    value: /^(?=.*[a-zA-Z])(?=.*[0-9]).{8,16}$/,
+                    value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/,
                     message: '영문, 숫자 조합 8~16자리로 입력해주세요',
                   },
                 }}
