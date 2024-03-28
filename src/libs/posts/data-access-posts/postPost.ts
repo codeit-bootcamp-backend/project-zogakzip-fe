@@ -4,12 +4,8 @@ import { postRequest } from '@services/api/requests'
 import { PostCreateFormInput, PostDetail } from '@services/api/types'
 import { revalidatePath } from 'next/cache'
 
-type PostPostRequest = Omit<PostCreateFormInput, 'tags'> & { tags: string }
-
-const postPost = async (groupId: number, data: PostCreateFormInput) => {
-  const { tags, ...rest } = data
-  const body = { ...rest, tags: JSON.stringify(tags) }
-  const response = await postRequest<PostDetail, PostPostRequest>(`/groups/${groupId}/posts`, body)
+const postPost = async (groupId: number, body: PostCreateFormInput) => {
+  const response = await postRequest<PostDetail, PostCreateFormInput>(`/groups/${groupId}/posts`, body)
 
   revalidatePath('/groups')
   revalidatePath(`/groups/${groupId}`)
