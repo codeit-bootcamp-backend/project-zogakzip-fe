@@ -42,7 +42,7 @@ const CommentOptionButtons = ({ comment, onSuccessEdit, onSuccessDelete }: Comme
     } catch (error) {
       openConfirmModal({
         title: '댓글 수정 실패',
-        ...((error instanceof Error) && { description: error.message }),
+        description: '댓글 수정에 실패했습니다.',
       })
     }
   }
@@ -60,7 +60,7 @@ const CommentOptionButtons = ({ comment, onSuccessEdit, onSuccessDelete }: Comme
     } catch (error) {
       openConfirmModal({
         title: '댓글 삭제 실패',
-        ...((error instanceof Error) && { description: error.message }),
+        description: '댓글 삭제에 실패했습니다.',
       })
     }
   }

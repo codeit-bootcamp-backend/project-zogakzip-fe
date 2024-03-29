@@ -47,7 +47,7 @@ const LikeButton = ({ type, id, setLikeCount }: LikeButtonProps) => {
     } catch (error) {
       openConfirmModal({
         title: '공감하기 실패',
-        ...((error instanceof Error) && { description: error.message }),
+        description: `${type === 'group' ? '그룹' : '추억'} 공감에 실패했습니다.`,
       })
     }
   }

@@ -35,7 +35,7 @@ const GroupOptionButtons = ({ groupId, groupDetail, onSuccessEdit }: GroupOption
     } catch (error) {
       openConfirmModal({
         title: '그룹 수정 실패',
-        ...((error instanceof Error) && { description: error.message }),
+        description: '그룹 수정에 실패했습니다.',
       })
     }
   }
@@ -55,7 +55,7 @@ const GroupOptionButtons = ({ groupId, groupDetail, onSuccessEdit }: GroupOption
     } catch (error) {
       openConfirmModal({
         title: '그룹 삭제 실패',
-        ...((error instanceof Error) && { description: error.message }),
+        description: '그룹 삭제에 실패했습니다.',
       })
     }
   }

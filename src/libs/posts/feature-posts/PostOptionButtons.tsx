@@ -35,7 +35,7 @@ const PostOptionButtons = ({ postId, postDetail, onSuccessEdit }: PostOptionButt
     } catch (error) {
       openConfirmModal({
         title: '추억 수정 실패',
-        ...((error instanceof Error) && { description: error.message }),
+        description: '추억 수정에 실패했습니다.',
       })
     }
   }
@@ -55,7 +55,7 @@ const PostOptionButtons = ({ postId, postDetail, onSuccessEdit }: PostOptionButt
     } catch (error) {
       openConfirmModal({
         title: '추억 삭제 실패',
-        ...((error instanceof Error) && { description: error.message }),
+        description: '추억 삭제에 실패했습니다.',
       })
     }
   }

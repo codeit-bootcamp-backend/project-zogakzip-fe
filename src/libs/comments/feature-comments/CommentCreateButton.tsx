@@ -37,7 +37,7 @@ const CommentCreateButton = ({ postId, totalItemCount, onSuccessCreate }: Commen
     } catch (error) {
       openConfirmModal({
         title: '댓글 등록 실패',
-        ...((error instanceof Error) && { description: error.message }),
+        description: '댓글 등록에 실패했습니다.',
       })
     }
   }

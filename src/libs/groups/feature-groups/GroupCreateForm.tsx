@@ -27,7 +27,7 @@ const GroupCreateForm = ({ }: GroupCreateFormProps) => {
     } catch (error) {
       openConfirmModal({
         title: '그룹 만들기 실패',
-        ...((error instanceof Error) && { description: error.message }),
+        description: '그룹 등록에 실패했습니다.',
       })
     }
   }
