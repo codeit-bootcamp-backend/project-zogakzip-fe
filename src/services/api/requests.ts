@@ -36,7 +36,7 @@ export const getRequest = async <T>(url: string, config?: RequestInit): Promise<
       errorMessage = errorData.message
     } catch (error) {
     }
-    return Promise.reject(new Error(errorMessage))
+    return Promise.reject(new Error(`${response.status}: ${errorMessage}`))
   }
 
   return response.json() as Promise<T>
@@ -61,7 +61,7 @@ export const postRequest = async <T, B>(url: string, body?: B, config?: RequestI
       errorMessage = errorData.message
     } catch (error) {
     }
-    return Promise.reject(new Error(errorMessage))
+    return Promise.reject(new Error(`${response.status}: ${errorMessage}`))
   }
 
   return response.json() as Promise<T>
@@ -86,7 +86,7 @@ export const putRequest = async <T, B>(url: string, body: B, config?: RequestIni
       errorMessage = errorData.message
     } catch (error) {
     }
-    return Promise.reject(new Error(errorMessage))
+    return Promise.reject(new Error(`${response.status}: ${errorMessage}`))
   }
 
   return response.json() as Promise<T>
@@ -111,7 +111,7 @@ export const deleteRequest = async <T, B>(url: string, body?: B, config?: Reques
       errorMessage = errorData.message
     } catch (error) {
     }
-    return Promise.reject(new Error(errorMessage))
+    return Promise.reject(new Error(`${response.status}: ${errorMessage}`))
   }
 
   return response.json() as Promise<T>
@@ -136,7 +136,7 @@ export const patchRequest = async <T, B>(url: string, body: B, config?: RequestI
       errorMessage = errorData.message
     } catch (error) {
     }
-    return Promise.reject(new Error(errorMessage))
+    return Promise.reject(new Error(`${response.status}: ${errorMessage}`))
   }
 
   return response.json() as Promise<T>
