@@ -15,6 +15,7 @@ import TagsFieldConnect from '@libs/shared/form-field/TagsFieldConnect'
 import useModal from '@libs/shared/modal/useModal'
 import FormModal from '@libs/shared/modal/FormModal'
 import AuthFormContent from '@libs/shared/form-field/AuthFormContent/AuthFormContent'
+import { PASSWORD_VALIDATION_REGEXP } from '@libs/shared/util-constants/constants'
 
 const cx = classNames.bind(styles)
 
@@ -130,7 +131,7 @@ const PostCreateForm = ({
                 rules={{
                   required: '필수 입력사항입니다.',
                   pattern: {
-                    value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/,
+                    value: PASSWORD_VALIDATION_REGEXP,
                     message: '영문, 숫자 조합 8~16자리로 입력해주세요',
                   },
                 }}

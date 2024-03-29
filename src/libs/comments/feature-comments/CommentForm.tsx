@@ -6,6 +6,7 @@ import FieldLabel from '@libs/shared/input/FieldLabel/FieldLabel'
 import TextFieldConnect from '@libs/shared/form-field/TextFieldConnect'
 import TextAreaConnect from '@libs/shared/form-field/TextAreaConnect'
 import Button from '@libs/shared/button/Button'
+import { PASSWORD_VALIDATION_REGEXP } from '@libs/shared/util-constants/constants'
 
 const cx = classNames.bind(styles)
 
@@ -57,7 +58,7 @@ const CommentForm = ({ defaultValues, onSubmit }: CommentFormProps) => {
                 rules={{
                   required: '필수 입력사항입니다.',
                   pattern: {
-                    value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,16}$/,
+                    value: PASSWORD_VALIDATION_REGEXP,
                     message: '영문, 숫자 조합 8~16자리로 입력해주세요',
                   },
                 }}
