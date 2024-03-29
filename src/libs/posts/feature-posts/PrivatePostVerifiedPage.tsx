@@ -56,7 +56,7 @@ const PrivatePostVerifiedPage = ({ postId, page }: PrivatePostVerifiedPageProps)
                 setCommentsPagination((prev) => {
                   if (!prev) return
                   return {
-                    currentPage: Math.ceil((prev.totalItemCount + 1) / COMMENTS_PAGE_SIZE),
+                    currentPage: 1,
                     totalPages: Math.ceil((prev.totalItemCount + 1) / COMMENTS_PAGE_SIZE),
                     totalItemCount: prev.totalItemCount + 1,
                     data: [...prev.data, response],
