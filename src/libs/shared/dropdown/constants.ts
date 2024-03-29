@@ -15,7 +15,7 @@ export const SORT_BY_GROUPS_FILTERS = [
   },
   {
     data: SortByGroups.mostPosted,
-    text: '게시글 많은 순',
+    text: '추억 많은 순',
   },
 ]
 
