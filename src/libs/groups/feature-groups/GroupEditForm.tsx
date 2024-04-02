@@ -9,7 +9,6 @@ type GroupEditFormProps = {
 }
 
 const GroupEditForm = ({ defaultValues, onSubmit }: GroupEditFormProps) => {
-  // TODO-2: 스크롤 시 화면 정중앙에서 벗어남
   return (
     <GroupForm
       onSubmit={onSubmit}

@@ -1,5 +1,5 @@
 .dialog {
-  position: relative;
+  // 참고: dialog 태그의 기본 position 속성 값은 fixed
   top: 50%;
   width: fit-content;
   margin: 0 auto;
