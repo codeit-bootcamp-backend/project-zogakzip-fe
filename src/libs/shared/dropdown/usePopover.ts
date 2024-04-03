@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 const usePopover = (triggerRef?: React.RefObject<HTMLButtonElement>) => {
   const popoverRef = useRef<HTMLDialogElement>(null)
@@ -18,32 +18,30 @@ const usePopover = (triggerRef?: React.RefObject<HTMLButtonElement>) => {
     setIsOpened((prev) => !prev)
   }
 
+  const handleClickOutside = useCallback((event: MouseEvent) => {
+    if (!popoverRef.current) return
+    if (!popoverRef.current.contains(event.target as Node)
+      &&
+      !triggerRef?.current?.contains(event.target as Node)) {
+      closePopover()
+    }
+  }, [triggerRef])
+
   useEffect(() => {
     if (!popoverRef.current) return
-    if (isOpened) popoverRef.current.show()
-    else popoverRef.current.close()
-  }, [isOpened])
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (!popoverRef.current) return
-      if (!popoverRef.current.contains(event.target as Node)
-        &&
-        !triggerRef?.current?.contains(event.target as Node)) {
-        closePopover()
-      }
-    }
-
     if (isOpened) {
+      popoverRef.current.show()
       document.addEventListener('mousedown', handleClickOutside)
-    } else {
+    }
+    else {
+      popoverRef.current.close()
       document.removeEventListener('mousedown', handleClickOutside)
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
-  }, [isOpened, popoverRef, triggerRef])
+  }, [handleClickOutside, isOpened])
 
   return { popoverRef, openPopover, closePopover, togglePopover, isOpened }
 }
