@@ -44,11 +44,11 @@ const useConfirmModal = () => {
     }
     else {
       modalRef.current.close()
-      document.body.style.overflow = 'auto'
+      document.body.style.overflow = 'initial'
     }
 
     return () => {
-      document.body.style.overflow = 'auto'
+      document.body.style.overflow = 'initial'
     }
   }, [isOpened])
 
