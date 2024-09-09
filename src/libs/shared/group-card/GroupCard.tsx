@@ -48,7 +48,7 @@ const GroupCard = ({ card }: GroupCardProps) => {
           {isPublic && (
             <div className={cx('countContainer')}>
               <h4 className={cx('label')}>획득 배지</h4>
-              <div className={cx('count')}>{badgeCount}</div>
+              <div className={cx('count')}>{badgeCount ?? 0}</div>
             </div>
           )}
           <div className={cx('countContainer')}>
