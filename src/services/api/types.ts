@@ -135,3 +135,8 @@ export type CommentFormInput = {
 }
 
 export type CommentDeleteFormInput = Pick<CommentFormInput, 'password'>
+
+// baseUrl - input
+export type BaseUrlSettingFormInput = {
+  baseUrl: string
+}

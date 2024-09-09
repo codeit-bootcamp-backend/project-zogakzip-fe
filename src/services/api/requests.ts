@@ -1,6 +1,4 @@
-const addBaseUrlPrefix = (url: string) => {
-  return url.startsWith('/') ? `${process.env.NEXT_PUBLIC_BASE_URL}${url}` : `${process.env.NEXT_PUBLIC_BASE_URL}/${url}`
-}
+import addBaseUrlPrefix from './addBaseUrlPrefix'
 
 const requestInterceptor = (url: string, method: string) => {
   if (process.env.NODE_ENV === 'development') {
@@ -20,7 +18,7 @@ const responseInterceptor = (url: string, method: string, response: Response) =>
 
 export const getRequest = async <T>(url: string, config?: RequestInit): Promise<T> => {
   requestInterceptor(url, 'GET')
-  const response = await fetch(addBaseUrlPrefix(url), {
+  const response = await fetch(await addBaseUrlPrefix(url), {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -44,7 +42,7 @@ export const getRequest = async <T>(url: string, config?: RequestInit): Promise<
 
 export const postRequest = async <T, B>(url: string, body?: B, config?: RequestInit): Promise<T> => {
   requestInterceptor(url, 'POST')
-  const response = await fetch(addBaseUrlPrefix(url), {
+  const response = await fetch(await addBaseUrlPrefix(url), {
     method: 'POST',
     body: body instanceof FormData ? body : JSON.stringify(body),
     headers: {
@@ -69,7 +67,7 @@ export const postRequest = async <T, B>(url: string, body?: B, config?: RequestI
 
 export const putRequest = async <T, B>(url: string, body: B, config?: RequestInit): Promise<T> => {
   requestInterceptor(url, 'PUT')
-  const response = await fetch(addBaseUrlPrefix(url), {
+  const response = await fetch(await addBaseUrlPrefix(url), {
     method: 'PUT',
     body: JSON.stringify(body),
     headers: {
@@ -94,7 +92,7 @@ export const putRequest = async <T, B>(url: string, body: B, config?: RequestIni
 
 export const deleteRequest = async <T, B>(url: string, body?: B, config?: RequestInit): Promise<T> => {
   requestInterceptor(url, 'DELETE')
-  const response = await fetch(addBaseUrlPrefix(url), {
+  const response = await fetch(await addBaseUrlPrefix(url), {
     method: 'DELETE',
     body: JSON.stringify(body),
     headers: {
@@ -119,7 +117,7 @@ export const deleteRequest = async <T, B>(url: string, body?: B, config?: Reques
 
 export const patchRequest = async <T, B>(url: string, body: B, config?: RequestInit): Promise<T> => {
   requestInterceptor(url, 'PATCH')
-  const response = await fetch(addBaseUrlPrefix(url), {
+  const response = await fetch(await addBaseUrlPrefix(url), {
     method: 'PATCH',
     body: JSON.stringify(body),
     headers: {
